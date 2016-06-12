@@ -1,0 +1,16 @@
+{
+  "name": "get-my-artist",
+  "version": "0.0.1",
+  "description": "Artist Booking",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://abhijit-bit@bitbucket.org/abhijit-bit/get-my-artist.git"
+  },
+  "author": "Abhijit",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/abhijit-bit/get-my-artist#readme"
+}
