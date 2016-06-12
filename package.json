@@ -12,5 +12,29 @@
   },
   "author": "Abhijit",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/abhijit-bit/get-my-artist#readme"
+  "homepage": "https://bitbucket.org/abhijit-bit/get-my-artist#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "browser-sync": "^2.12.10",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-jsvalidate": "^2.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "^2.0.7",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-uglify": "^1.5.3",
+    "jquery": "^2.2.4",
+    "roboto-fontface": "^0.5.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "mongoose": "^4.4.20",
+    "morgan": "^1.7.0",
+    "q": "^1.4.1"
+  }
 }

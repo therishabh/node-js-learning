@@ -1,0 +1,11 @@
+.idea
+temp/
+*.DS_Store
+*.log
+*.swp
+node_modules/
+bower_components/
+client/_core/vendor/
+www/
+templates/
+npm-debug.log
