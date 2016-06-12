@@ -1,27 +1,27 @@
 {
-    "name": "get-my-artist",
-    "description": "Get My Artist",
-    "main": "",
-    "authors": [
-        "Abhijit"
-    ],
-    "license": "MIT",
-    "homepage": "",
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "bootstrap": "^3.3.6",
-        "jquery": "^2.2.4",
-        "font-awesome": "^4.6.3",
-        "angular": "~1.5.x",
-        "angular-animate": "~1.5.x",
-        "angular-sanitize": "~1.5.x",
-        "angular-ui-router": "~0.2.15",
-        "angular-touch": "~1.5.x"
-    }
+  "name": "get-my-artist",
+  "description": "Get My Artist",
+  "main": "",
+  "authors": [
+    "Abhijit"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "font-awesome": "^4.6.3",
+    "angular": "~1.5.x",
+    "angular-animate": "~1.5.x",
+    "angular-sanitize": "~1.5.x",
+    "angular-ui-router": "~0.2.15",
+    "angular-touch": "~1.5.x",
+    "material-design-lite": "^1.1.3"
+  }
 }

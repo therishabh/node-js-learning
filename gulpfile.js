@@ -15,66 +15,60 @@ var minifyCSS = require('gulp-cssnano'),
 
 var adminJsPath = {
     'vendor': [
-        './bower_components/angular/angular.js',
-        './bower_components/angular-route/angular-route.js',
-        './bower_components/angular-sanitize/angular-sanitize.js',
-        './bower_components/angular-animate/angular-animate.js',
-        './bower_components/angular-touch/angular-touch.js',
-        './bower_components/jquery/dist/jquery.js',
-        './bower_components/bootstrap/dist/scripts/bootstrap.js'
+        './client/_core/vendor/angular/angular.js',
+        '/client/_core/vendor/angular-ui-router/release/angular-ui-router.js',
+        './client/_core/vendor/angular-sanitize/angular-sanitize.js',
+        './client/_core/vendor/angular-animate/angular-animate.js',
+        './client/_core/vendor/angular-touch/angular-touch.js',
+        '.client/_core/vendor/material-design-lite/material.min.js'
     ],
     'app': [
-        './public/admin/scripts/**/**/*.js'
+        './client/admin/scripts/**/**/*.js'
     ]
 };
 
 var adminCcsPath = {
     'vendor': [
-        './bower_components/angular/angular-csp.css',
-        './bower_components/bootstrap/dist/css/bootstrap.css',
-        './bower_components/font-awesome/css/font-awesome.css'
+        './client/_core/vendor/angular/angular-csp.css',
+        './client/_core/vendor/font-awesome/css/font-awesome.css',
+        './client/_core/vendor/material-design-lite/material.min.css'
     ],
     'app': [
-        './public/core/styles/**/**/**/*.scss',
-        './public/admin/styles/**/**/**/*.scss'
+        './client/core/styles/**/**/**/*.scss',
+        './client/admin/styles/**/**/**/*.scss'
     ]
 };
-var adminJadePath = ['./public/admin/pages/**/**/**/*.jade'];
+var adminJadePath = ['./client/admin/pages/**/**/**/*.jade'];
 
 
 var userJsPath = {
     'vendor': [
-        './bower_components/angular/angular.js',
-        './bower_components/angular-route/angular-route.js',
-        './bower_components/angular-sanitize/angular-sanitize.js',
-        './bower_components/angular-animate/angular-animate.js',
-        './bower_components/angular-touch/angular-touch.js',
-        './bower_components/jquery/dist/jquery.js',
-        './bower_components/bootstrap/dist/js/bootstrap.js'
+        './client/_core/vendor/jquery/dist/jquery.js',
+        '.client/_core/vendor/material-design-lite/material.min.js'
     ],
     'app': [
-        './public/user/scripts/**/**/*.js'
+        './client/user/scripts/**/**/*.js'
     ]
 };
 
 var userCcsPath = {
     'vendor': [
-        './bower_components/angular/angular-csp.css',
-        './bower_components/bootstrap/dist/css/bootstrap.css',
-        './bower_components/font-awesome/css/font-awesome.css'
+        './client/_core/vendor/angular/angular-csp.css',
+        './client/_core/vendor/material-design-lite/material.min.css',
+        './client/_core/vendor/font-awesome/css/font-awesome.css'
     ],
     'app': [
-        './public/core/styles/**/**/**/*.scss',
-        './public/user/styles/**/**/**/*.scss'
+        './client/core/styles/**/**/**/*.scss',
+        './client/user/styles/**/**/**/*.scss'
     ]
 };
 
-var userJadePath = ['./public/user/pages/**/**/**/*.jade'];
+var userJadePath = ['./client/user/pages/**/**/**/*.jade'];
 
 
 
 var fontPath = [
-    './public/core/fonts/**/**/*.*'
+    './client/core/fonts/**/**/*.*'
 ];
 
 
@@ -129,7 +123,7 @@ gulp.task('admin-css-vendor', function() {
 
 //app scss compile 
 gulp.task('admin-css-app', function() {
-    gulp.src('./public/admin/styles/style.scss')
+    gulp.src('./client/admin/styles/style.scss')
         .pipe(plumber({
             errLogToConsole: true,
             errorHandler: notify.onError({
@@ -145,22 +139,11 @@ gulp.task('admin-css-app', function() {
 
 
 //=============
-// Admin HTML Move
-// TODO
-//=============
-gulp.task('admin-html', function() {
-    gulp.src('./public/admin/pages/**/**/**/*.html')
-        .pipe(gulp.dest('./www/admin/pages/'));
-});
-//=============
 // Admin Jade Compile
 //=============
 gulp.task('admin-jade', function() {
 
-
-        gulp.src('./public/admin/pages/**/**/**/!(_)*.jade')
-
-    var static = gulp.src('./public/admin/pages/**/**/**/!(_)*.jade')
+    var static = gulp.src('./client/admin/pages/**/**/**/!(_)*.jade')
         .pipe(plumber({
             errLogToConsole: true,
             errorHandler: notify.onError({
@@ -177,7 +160,6 @@ gulp.task('admin-jade', function() {
         .on("error", console.log)
         .pipe(gulp.dest('./www/admin/pages/'));
 });
-
 
 
 
@@ -231,7 +213,7 @@ gulp.task('user-css-vendor', function() {
 
 //app scss compile 
 gulp.task('user-css-app', function() {
-    gulp.src('./public/user/styles/style.scss')
+    gulp.src('./client/user/styles/style.scss')
         .pipe(plumber({
             errLogToConsole: true,
             errorHandler: notify.onError({
@@ -250,7 +232,7 @@ gulp.task('user-css-app', function() {
 // user Jade Compile
 //=============
 gulp.task('user-jade', function() {
-    gulp.src('./public/user/pages/**/**/**/*.jade')
+    gulp.src('./client/user/pages/**/**/**/*.jade')
         .pipe(gulp.dest('./www/user/pages/'));
 });
 
@@ -267,7 +249,7 @@ gulp.task('fonts', function() {
 // Core images Move
 //=============
 gulp.task('core-images', function() {
-    gulp.src('./public/core/images/**/**/**/*.*')
+    gulp.src('./client/core/images/**/**/**/*.*')
         .pipe(gulp.dest('./www/core/images/'));
 });
 
@@ -361,246 +343,3 @@ gulp.task('default', [
     gulp.watch(['./www/user/js/*.js'], reload);
     gulp.watch(['./www/user/pages/**/*.html'], reload);
 });
-
-
-
-// var port=process.env.PORT || config.defaultPort;
-
-
-// gulp.task('vet',function () {
-
-//     log('analysing with jshint and jscs');
-//     return gulp
-//         .src(config.alljs)
-//         .pipe($.if(args.verbose,$.print()))
-//         .pipe($.jscs())
-//         .pipe($.jshint())
-//         .pipe($.jshint.reporter('jshint-stylish',{verbose:true}))
-//         .pipe($.jshint.reporter('fail'));
-// });
-
-// gulp.task('inject-index',function () {
-
-//     return gulp
-//         .src(config.client+'index.html')
-//         .pipe($.inject(gulp.src(config.scripts),{relative:true}))
-//         .pipe(gulp.dest(config.client))
-// });
-
-// gulp.task('wiredep',function () {
-
-//     var options=config.getWiredepDefaultOptions();
-//     var wiredep=require('wiredep').stream;
-
-//     return gulp
-//         .src(config.client+'*.html')
-//         .pipe(wiredep(options))
-//         .pipe($.inject(gulp.src(config.scripts),{relative:true}))
-//         .pipe(gulp.dest(config.client))
-// });
-
-
-
-// gulp.task('styles',function () {
-//     log('Compiling less to css');
-//     return gulp
-//         .src(config.scss)
-//         .pipe($.sass())
-//         .on('error',errorHandler)
-//         .pipe($.autoprefixer({browsers:['last 2 version','> 5%']}))
-//         .pipe(gulp.dest(config.css));
-// });
-
-// gulp.task('inject',['styles','wiredep','inject-index'],function () {
-
-//     return gulp
-//         .src(config.client+'index.html')
-//         .pipe($.inject(gulp.src(config.css+'admin.main.css'),{relative:true}))
-//         .pipe(gulp.dest(config.client))
-// });
-
-// gulp.task('serve-dev',['inject'],function () {
-//     var isDev=true;
-//     var nodeOptions={
-//         script:config.nodeServer,
-//         delayTime:1,
-//         env:{
-//             'PORT':port,
-//             'NODE_ENV':isDev?'dev':'build'
-//         },
-//         watch:[config.server] //files to be watched for restarting the app.scripts
-//     };
-
-//     return $.nodemon(nodeOptions)
-//         .on('restart',function (ev) {
-//             log('***nodemon restarted');
-//             log('files changed on restart:\n'+ev);
-//             setTimeout(function () {
-//                 browserSync.notify('reloading now...');
-//                 browserSync.reload({stream:false});
-//             },1000);
-//         })
-//         .on('start',function () {
-//             log('starting ***** nodemon');
-//             startBrowserSync();
-//         })
-//         .on('crash',function () {
-//             log('***nodemon crashed due to some file error');
-//         })
-//         .on('exit',function () {
-//             log('***nodemon exited');
-//         })
-// });
-
-// gulp.task('help',function () {
-//     $.taskListing();
-// });
-
-// gulp.task('default',['help']);
-
-// function log(msg) {
-//     $.util.log($.util.colors.black(msg));
-// }
-
-
-// function startBrowserSync(){
-
-//     var watchFiles=[config.scss,config.scripts,config.dashboard,config.index,config.styles];
-
-//     if(browserSync.active){
-//         return
-//     }
-//     log('starting ***** nodemon');
-//     gulp.watch(watchFiles,['inject'],function () {
-//         log('file changed');
-//     });
-
-//     var options={
-//         proxy:'localhost:' +port,
-//         port:3000,
-//         files:[config.client+'**/*.*'],
-//         ghostMode:{
-//             clicks:true,
-//             location:false,
-//             forms:true,
-//             scroll:true
-//         },
-//         injectChanges:true,
-//         logFileChanges:true,
-//         logLevel:'debug',
-//         logPrefix:'gulp-patterns',
-//         notify:true,
-//         reloadDelay:0
-//     };
-//     console.log('starting ***** nodemon')
-//     browserSync(options);
-//     console.log('starting ***** nodemon')
-// }
-
-// function errorHandler(error) {
-//     log('**** start of error****');
-//     log(error);
-//     log('**** end of error****');
-//     this.emit('end');
-// }
-// gulp.task('watcher',function () {
-//     gulp.watch([config.less],['styles']);
-// });
-
-
-// gulp.task('templateCache',['clean-code'],function () {
-//     log('Creating AngularJs cache....');
-//
-//     return gulp
-//         .src(config.htmltemplates)
-//         .pipe($.minifyHtml({empty:true}))
-//         .pipe($.angularTemplatecache(
-//             config.templateCache.file,
-//             config.templateCache.options
-//         ))
-//         .pipe(gulp.dest(config.temp));
-// });
-
-// gulp.task('inject',['wiredep','styles','templateCache'],function () {
-//
-//     return gulp
-//         .src(config.index)
-//         .pipe($.inject(gulp.src(config.css)))
-//         .pipe(gulp.dest(config.client))
-// });
-
-
-
-// gulp.task('optimize',['inject'],function () {
-//     log('optimizing the javascript,css,html');
-//
-//     var templateCache=config.temp + config.templateCache.file;
-//     var assets=$.useref.assets({searchpath:'./'});
-//     return gulp
-//         .src(config.index)
-//         .pipe($.inject(gulp.src(templateCache,{read:false}),
-//             {
-//                 starttag:'<!--inject:templates:scripts-->'
-//             }))
-//         .pipe(assets)
-//         .pipe(assets.restore())
-//         .pipe(gulp.dest(config.build));
-//
-// });
-
-
-// gulp.task('fonts',['clean-fonts'],function () {
-//     log('copying fonts ..... into the build folder');
-//     return  gulp
-//         .src(config.fonts)
-//         .pipe(gulp.dest(config.build + 'fonts'));
-// });
-
-// gulp.task('images',['clean-images'],function () {
-//     log('copying images and optimizing ..... into the build folder');
-//     return  gulp
-//         .src(config.images)
-//         .pipe($.imagemin({optimizationLevel:4}))
-//         .pipe(gulp.dest(config.build + 'images'));
-// });
-
-// gulp.task('clean-fonts',function () {
-//     clean(config.build+'fonts/**/*.*');
-// });
-
-
-// gulp.task('clean-images',function () {
-//     clean(config.build+'images/**/*.*');
-// });
-//
-// gulp.task('clean-styles',function () {
-//     clean(config.temp +"**/*.css")
-// });
-
-// gulp.task('clean',function () {
-//     var delFiles=[].concat(config.temp,config.build);
-//     log('cleaning' + $.util.colors.blue(delFiles));
-//     del(delFiles);
-// });
-
-// gulp.task('clean-code',function () {
-//     var files=[].concat(
-//         config.temp + '**/*.scripts'
-//         ,config.build + '**/*.html'
-//         ,config.build + 'scripts/**/*.scripts');
-//
-//     log('cleaning' + $.util.colors.blue(files));
-//     clean(files);
-// });
-
-
-//
-
-
-
-// function clean(path) {
-//     log('Cleaning: '+ $.util.colors.yellow(path));
-//     del(path);
-//
-// }
-
