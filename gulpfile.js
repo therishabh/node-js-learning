@@ -253,6 +253,30 @@ gulp.task('core-images', function() {
 });
 
 
+//=============
+// Core Jade Compile
+//=============
+gulp.task('core-jade', function() {
+
+    var static = gulp.src('./client/_core/pages/**/**/**/!(_)*.jade')
+        .pipe(plumber({
+            errLogToConsole: true,
+            errorHandler: notify.onError({
+                "title": "Jade Error",
+                "message": function(error) {
+                    return error;
+                }
+            })
+        }))
+        .pipe(jade({
+            pretty: true
+        }))
+        // .pipe(htmlmin({ collapseWhitespace: true }))
+        .on("error", console.log)
+        .pipe(gulp.dest('./www/core/pages/'));
+});
+
+
 
 gulp.task('browser-sync', ['nodemon'], function() {
     browserSync({
@@ -301,7 +325,8 @@ gulp.task('default', [
     'user-css-app',
     'user-jade',
     'fonts',
-    'core-images'
+    'core-images',
+    'core-jade'
 ], function() {
 
     gulp.watch(adminCcsPath.app, function() {

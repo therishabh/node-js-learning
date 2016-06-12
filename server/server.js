@@ -23,6 +23,7 @@ mongoose.connect(dbConfig.database);
 
 //******* view engine and static files *******
 app.use(express.static('www'));
+app.set('views', 'www');
 app.set('view engine', 'jade');
 //******* view engine and static files *******
 
