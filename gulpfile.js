@@ -305,7 +305,7 @@ gulp.task('nodemon', function(cb) {
             setTimeout(function() {
                 reload({ stream: false });
             }, 1000);
-            gulp.src('server/app.js')
+            gulp.src('server/server.js')
                 .pipe(notify('Reloading page, please wait...'));
         });
 });
@@ -363,5 +363,6 @@ gulp.task('default', [
     gulp.watch(['./www/admin/js/*.js'], reload);
     gulp.watch(['./www/user/css/*.scss'], reload);
     gulp.watch(['./www/user/js/*.js'], reload);
-    gulp.watch(['./www/user/pages/**/*.html'], reload);
+    gulp.watch(['./www/user/pages/**/*.jade'], reload);
+    gulp.watch(['./www/admin/pages/**/*.html'], reload);
 });
