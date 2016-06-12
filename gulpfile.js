@@ -1,6 +1,5 @@
 var minifyCSS = require('gulp-cssnano'),
     uglify = require('gulp-uglify'),
-    htmlmin = require('gulp-htmlmin'),
     jade = require('gulp-jade'),
     gulp = require('gulp'),
     nodemon = require('gulp-nodemon'),
@@ -257,7 +256,7 @@ gulp.task('core-images', function() {
 
 gulp.task('browser-sync', ['nodemon'], function() {
     browserSync({
-        proxy: "localhost:8000", // local node app address
+        proxy: "localhost:6001", // local node app address
         port: 3000, // use *different* port than above
         notify: false
     });
@@ -266,7 +265,7 @@ gulp.task('browser-sync', ['nodemon'], function() {
 gulp.task('nodemon', function(cb) {
     var called = false;
     return nodemon({
-            script: 'server/app.js',
+            script: 'server/server.js',
             ignore: [
                 'gulpfile.js',
                 'node_modules/'
@@ -295,7 +294,6 @@ gulp.task('default', [
     'admin-js-app',
     'admin-css-vendor',
     'admin-css-app',
-    'admin-html',
     'admin-jade',
     'user-js-vendor',
     'user-js-app',
@@ -338,7 +336,6 @@ gulp.task('default', [
     gulp.watch(['./www/admin/css/*.scss'], reload);
     gulp.watch(['./www/admin/scripts/*.js'], reload);
     gulp.watch(['./www/admin/js/*.js'], reload);
-    gulp.watch(['./www/admin/pages/**/*.html'], reload);
     gulp.watch(['./www/user/css/*.scss'], reload);
     gulp.watch(['./www/user/js/*.js'], reload);
     gulp.watch(['./www/user/pages/**/*.html'], reload);
