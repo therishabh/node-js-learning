@@ -357,12 +357,11 @@ gulp.task('default', [
         gulp.run('user-js-app');
     });
 
-    gulp.watch(['server/**/**/*.js'], reload);
-    gulp.watch(['./www/admin/css/*.scss'], reload);
-    gulp.watch(['./www/admin/scripts/*.js'], reload);
-    gulp.watch(['./www/admin/js/*.js'], reload);
-    gulp.watch(['./www/user/css/*.scss'], reload);
-    gulp.watch(['./www/user/js/*.js'], reload);
-    gulp.watch(['./www/user/pages/**/*.jade'], reload);
-    gulp.watch(['./www/admin/pages/**/*.html'], reload);
+    gulp.watch(['./client/**/**/**/*.jade'], reload);
+    // gulp.watch(['./server/**/**/*.js'], reload);
+    // gulp.watch(['./www/admin/css/*.scss'], reload);
+    // gulp.watch(['./www/admin/scripts/*.js'], reload);
+    // gulp.watch(['./www/admin/js/*.js'], reload);
+    // gulp.watch(['./www/user/css/*.scss'], reload);
+    // gulp.watch(['./www/admin/pages/**/*.html'], reload);
 });
