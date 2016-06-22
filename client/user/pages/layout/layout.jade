@@ -1,0 +1,13 @@
+doctype html
+html
+	head
+		title Get my Artist
+		link(rel="stylesheet", href="/css/vendor.min.css")
+		link(rel="stylesheet", href="/css/app.min.css")
+
+		block head
+	body
+		include ../components/header/_header.jade
+		section.main-container
+			block content
+		include ../components/footer/_footer.jade

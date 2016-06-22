@@ -10,6 +10,8 @@ router.use(function(req, res, next) {
             req.url = req.url + '/';
             res.redirect(301, req.url);
 
+        } else {
+            next();
         }
     } else {
 
@@ -18,9 +20,10 @@ router.use(function(req, res, next) {
             req.url = req.url + '/';
             res.redirect(301, req.url);
 
+        } else {
+            next();
         }
     }
-    next();
 });
 
 var api = require('./../../api/routes');
