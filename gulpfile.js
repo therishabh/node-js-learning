@@ -12,19 +12,15 @@ var minifyCSS = require('gulp-cssnano'),
     reload = browserSync.reload;
 
 
-var adminJsPath = {
-    'vendor': [
-        './client/_core/vendor/angular/angular.js',
-        '/client/_core/vendor/angular-ui-router/release/angular-ui-router.js',
-        './client/_core/vendor/angular-sanitize/angular-sanitize.js',
-        './client/_core/vendor/angular-animate/angular-animate.js',
-        './client/_core/vendor/angular-touch/angular-touch.js',
-        '.client/_core/vendor/material-design-lite/material.min.js'
-    ],
-    'app': [
-        './client/admin/scripts/**/**/*.js'
-    ]
-};
+var adminJsPath = [
+    './client/_core/vendor/angular/angular.js',
+    '/client/_core/vendor/angular-ui-router/release/angular-ui-router.js',
+    './client/_core/vendor/angular-sanitize/angular-sanitize.js',
+    './client/_core/vendor/angular-animate/angular-animate.js',
+    './client/_core/vendor/angular-touch/angular-touch.js',
+    './client/_core/vendor/material-design-lite/material.min.js',
+    './client/admin/scripts/**/**/*.js'
+];
 
 var adminCcsPath = {
     'vendor': [
@@ -40,15 +36,11 @@ var adminCcsPath = {
 var adminJadePath = ['./client/admin/pages/**/**/**/*.jade'];
 
 
-var userJsPath = {
-    'vendor': [
-        './client/_core/vendor/jquery/dist/jquery.js',
-        '.client/_core/vendor/material-design-lite/material.min.js'
-    ],
-    'app': [
-        './client/user/scripts/**/**/*.js'
-    ]
-};
+var userJsPath = [
+    './client/_core/vendor/jquery/dist/jquery.js',
+    './client/_core/vendor/material-design-lite/material.js',
+    './client/user/scripts/**/**/*.js'
+];
 
 var userCcsPath = {
     'vendor': [
@@ -74,26 +66,10 @@ var fontPath = [
 //=============
 // Admin JS
 //=============
-//vendor javascript compile and minified
-gulp.task('admin-scripts-vendor', function() {
-    gulp.src(adminJsPath.vendor)
-        .pipe(plumber({
-            errLogToConsole: true,
-            errorHandler: notify.onError({
-                "title": "Javascript Error",
-                "message": "Javascript Error"
-            })
-        }))
-        .pipe(uglify())
-        .pipe(concat('vendor.min.js'))
-        .pipe(jsValidate())
-        .on("error", console.log)
-        .pipe(gulp.dest('./www/admin/scripts/'));
-});
 
 //app javascript compile and minified
 gulp.task('admin-js-app', function() {
-    gulp.src(adminJsPath.app)
+    gulp.src(adminJsPath)
         .pipe(plumber({
             errLogToConsole: true,
             errorHandler: notify.onError({
@@ -162,29 +138,9 @@ gulp.task('admin-jade', function() {
 
 
 
-//=============
-// user JS
-//=============
-//vendor javascript compile and minified
-gulp.task('user-js-vendor', function() {
-    gulp.src(userJsPath.vendor)
-        .pipe(plumber({
-            errLogToConsole: true,
-            errorHandler: notify.onError({
-                "title": "Javascript Error",
-                "message": "Javascript Error"
-            })
-        }))
-        .pipe(uglify())
-        .pipe(concat('vendor.min.js'))
-        .pipe(jsValidate())
-        .on("error", console.log)
-        .pipe(gulp.dest('./www/user/js/'));
-});
-
 //app javascript compile and minified
 gulp.task('user-js-app', function() {
-    gulp.src(userJsPath.app)
+    gulp.src(userJsPath)
         .pipe(plumber({
             errLogToConsole: true,
             errorHandler: notify.onError({
@@ -314,12 +270,10 @@ gulp.task('nodemon', function(cb) {
 
 gulp.task('default', [
     'browser-sync',
-    'admin-scripts-vendor',
     'admin-js-app',
     'admin-css-vendor',
     'admin-css-app',
     'admin-jade',
-    'user-js-vendor',
     'user-js-app',
     'user-css-vendor',
     'user-css-app',

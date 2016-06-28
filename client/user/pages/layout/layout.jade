@@ -7,7 +7,10 @@ html
 
 		block head
 	body
-		include ../components/header/_header.jade
-		section.main-container
-			block content
-		include ../components/footer/_footer.jade
+		div(class="mdl-layout mdl-js-layout mdl-layout--fixed-header")
+			include ../components/header/_header.jade
+			main(class="mdl-layout__content")
+				block content
+				include ../components/footer/_footer.jade
+
+	script(type='text/javascript', src='/user/js/app.min.js')
