@@ -44,12 +44,10 @@ var userJsPath = [
 
 var userCcsPath = {
     'vendor': [
-        './client/_core/vendor/angular/angular-csp.css',
-        './client/_core/vendor/material-design-lite/material.min.css',
         './client/_core/vendor/font-awesome/css/font-awesome.css'
     ],
     'app': [
-        './client/core/styles/**/**/**/*.scss',
+        './client/_core/styles/**/**/**/*.scss',
         './client/user/styles/**/**/**/*.scss'
     ]
 };
@@ -168,7 +166,7 @@ gulp.task('user-css-vendor', function() {
 
 //app scss compile 
 gulp.task('user-css-app', function() {
-    gulp.src('./client/user/styles/style.scss')
+    gulp.src('./client/user/styles/client.scss')
         .pipe(plumber({
             errLogToConsole: true,
             errorHandler: notify.onError({
@@ -312,10 +310,10 @@ gulp.task('default', [
     });
 
     gulp.watch(['./client/**/**/**/*.jade'], reload);
-    // gulp.watch(['./server/**/**/*.js'], reload);
-    // gulp.watch(['./www/admin/css/*.scss'], reload);
-    // gulp.watch(['./www/admin/scripts/*.js'], reload);
-    // gulp.watch(['./www/admin/js/*.js'], reload);
-    // gulp.watch(['./www/user/css/*.scss'], reload);
-    // gulp.watch(['./www/admin/pages/**/*.html'], reload);
+    gulp.watch(['./server/**/**/*.js'], reload);
+    gulp.watch(['./www/admin/css/*.scss'], reload);
+    gulp.watch(['./www/admin/scripts/*.js'], reload);
+    gulp.watch(['./www/admin/js/*.js'], reload);
+    gulp.watch(['./www/user/css/*.css'], reload);
+    gulp.watch(['./www/admin/pages/**/*.html'], reload);
 });

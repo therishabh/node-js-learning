@@ -1,0 +1,47 @@
+@mixin generate-font-size-classes($values, $screenSize) {
+    @if($screenSize=='s') {
+        @include small {
+            @each $value in $values {
+                .font-size-s-#{$value} {
+                    font-size: #{$value}px;
+                }
+            }
+        }
+    }
+    @if($screenSize=='m') {
+        @include medium {
+            @each $value in $values {
+                .font-size-m-#{$value} {
+                    font-size: #{$value}px;
+                }
+            }
+        }
+    }
+    @if($screenSize=='l') {
+        @include large {
+            @each $value in $values {
+                .font-size-l-#{$value} {
+                    font-size: #{$value}px;
+                }
+                .font-size-#{$value} {
+                    font-size: #{$value}px;
+                }
+            }
+        }
+    }
+    @if($screenSize=='xl') {
+        @include xlarge {
+            @each $value in $values {
+                .font-size-xl-#{$value} {
+                    font-size: #{$value}px;
+                }
+            }
+        }
+    }
+}
+
+$fonts:(10, 12, 14, 16, 18, 20, 24, 28, 30, 32, 36, 42, 48, 72);
+@include generate-font-size-classes($fonts, 's');
+@include generate-font-size-classes($fonts, 'm');
+@include generate-font-size-classes($fonts, 'l');
+@include generate-font-size-classes($fonts, 'xl');

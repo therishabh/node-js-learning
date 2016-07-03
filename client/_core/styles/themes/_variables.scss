@@ -1,0 +1,105 @@
+//  Spinny for Sites Settings
+//  -----------------------------
+//
+//  Table of Contents:
+//
+//	1. Colors Variables
+//  2. Radio Button
+//  3. Checkbox Button
+//  4. Transition Speed
+//  5. Header Section
+// -----------------
+// 1. Colors Variables
+// -----------------
+// text-colors
+// $blue: #1C53E6;
+$blue: #2C48FF;
+$pink: #F01F4E;
+$dark-blue: #0335C7;
+$blue-highlight-color: #1C53E6;
+$dark-pink : #a70b2e;
+$error-color : #D71818; //#ED0B0F;
+$fav-color : #F44336;
+$text-color: #272727;
+$black-20: rgba(0, 0, 0, 0.20);
+$black-25: rgba(0, 0, 0, 0.25);
+$black-50: rgba(0, 0, 0, 0.50);
+$black-75: rgba(0, 0, 0, 0.75);
+$black: #000;
+$white-20: rgba(255, 255, 255, 0.20);
+$white-25: rgba(255, 255, 255, 0.25);
+$white: #fff;
+
+
+
+// radio-checkbox-colors
+$radio-checkbox-disable-border: #BDBDBD;
+$radio-checkbox-border: #5a5a5a;
+
+//common color
+$heading-color : #373737;
+$h1-text-color: #1F1F1F;
+$h2-text-color: #373737;
+
+
+
+// -----------------
+// Font Size 
+// -----------------
+$small-text-size: 17px;
+$medium-text-size: 19px;
+$text-size: 16px;
+$xlarge-text-size : 18px;
+$xxlarge-text-size : 22px;
+//h1
+$h1-text-size: 34px;
+$small-h1-text-size : 24px;
+$medium-h1-text-size : 28px;
+$large-h1-text-size : 34px;
+$xlarge-h1-text-size : 36px;
+$xxlarge-h1-text-size : 42px;
+
+//h2
+$h2-text-size: 24px;
+$small-h2-text-size : 18px;
+$medium-h2-text-size : 20px;
+$large-h2-text-size : 24px;
+$xlarge-h2-text-size : 26px;
+$xxlarge-h2-text-size : 32px;
+
+
+
+// -----------------
+// 2. Radio Button
+// -----------------
+$radio-border-color: $radio-checkbox-border;
+$radio-button-color: $blue;
+$radio-disable-color: $black-25;
+$radio-disable-border-color: $radio-checkbox-disable-border;
+
+
+// -----------------
+// 3. Checkbox Button
+// -----------------
+$checkbox-border-color: $radio-checkbox-border;
+$checkbox-button-color: $blue;
+$checkbox-disable-color: $black-25;
+$checkbox-disable-border-color: $radio-checkbox-disable-border;
+
+
+
+//-------------------
+// Transition Speed
+//-------------------
+
+$transition-speed: 0.4s;
+$underline-button-transition-speed: 0.15s;
+
+
+
+
+
+
+
+
+
