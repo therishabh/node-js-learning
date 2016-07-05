@@ -4,7 +4,9 @@ var schema = mongoose.Schema;
 var artistSchema = new schema({
     name: { type: String, trim: true },
     description: { type: String },
+    email: { type: String },
     link: {
+        youtube: { type: Array },
         facebook: { type: String },
         twitter: { type: String },
         instagram: { type: String },
