@@ -1,0 +1,163 @@
+// Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+// note: All CSS3 Properties are being supported by Safari 5
+// 
+//  Table of Contents :
+// 
+//  1: CSS3 Prefix
+//  2: Background Gradient
+//  3: Background Color Opacity
+//  4: Border Radius
+//  5: Box Shadow
+//  6: Opacity
+//  7: Transform
+//  8: Transition
+//  9: Keyframes
+//  10: Animation
+//  11: Shorthand mixin for offset positioning
+// 
+//  1: CSS3 Prefix
+// 
+// Adds a browser prefix to the property
+// @param {*} $property Property
+// @param {*} $value Value
+@mixin css3-prefix($property, $value) {
+    -webkit-#{$property}: #{$value};
+    -khtml-#{$property}: #{$value};
+    -moz-#{$property}: #{$value};
+    -ms-#{$property}: #{$value};
+    -o-#{$property}: #{$value};
+    #{$property}: #{$value};
+}
+
+// 2: Background Gradient
+// 
+// @param {Color} $startColor [#3C3C3C] - Start Color
+// @param {Color} $endColor [#999999] - End Color
+@mixin background-gradient($startColor: #3C3C3C, $endColor: #999999) {
+    background-image: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor));
+    background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+    background-image: -moz-linear-gradient(top, $startColor, $endColor);
+    background-image: -ms-linear-gradient(top, $startColor, $endColor);
+    background-image: -o-linear-gradient(top, $startColor, $endColor);
+    background-image: linear-gradient(top, $startColor, $endColor);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
+}
+
+// 3: Background Color Opacity
+// 
+// @param {Color} $color [100%] - Color
+// @param {Double} $opacity [0.85] - Opacity
+@mixin background-opacity($color: #000, $opacity: 0.85) {
+    background: $color;
+    background: rgba($color, $opacity);
+}
+
+// 4: Border Radius
+// 
+// @param {Size} $radius [4px] - Radius
+// @require {mixin} css3-prefix
+@mixin border-radius($radius: 4px) {
+    @include css3-prefix('border-radius', $radius);
+}
+
+// 5: Box Shadow
+// 
+// @param {Size} $x [0px] - X
+// @param {Size} $y [2px] - Y
+// @param {Size} $blur [5px] - Blur
+// @param {Color} $color [rgba(0,0,0,.4)] - Color
+// @param {Boolean} $inset - Inset
+@mixin box-shadow($x: 0px, $y: 2px, $blur: 5px, $color: rgba(0, 0, 0, .4), $inset: "") {
+    @if ($inset !="") {
+        @include css3-prefix('box-shadow', $inset $x $y $blur $color);
+    }
+    @else {
+        @include css3-prefix('box-shadow', $x $y $blur $color);
+    }
+}
+
+@mixin box-shadow-spread($x: 0px, $y: 2px, $blur: 5px, $spread: "0px", $color: rgba(0, 0, 0, .4), $inset: "") {
+    @if ($inset !="") {
+        @include css3-prefix('box-shadow', $inset $x $y $blur $spread $color);
+    }
+    @else {
+        @include css3-prefix('box-shadow', $x $y $blur $spread $color);
+    }
+}
+
+// 6: Opacity
+// 
+// @param {Double} $opacity [0.5] - Opacity
+// @require {mixin} css3-prefix
+@mixin opacity($opacity: 0.5) {
+    $opacityMultiplied: ($opacity * 100);
+    filter: alpha(opacity=$opacityMultiplied);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $opacityMultiplied + ")";
+    @include css3-prefix('opacity', $opacity);
+}
+
+// 7: Transform
+// 
+// @param {List} $params - Params
+// @require {mixin} css3-prefix
+@mixin transform($params) {
+    @include css3-prefix('transform', $params);
+}
+
+// 8: Transition
+// 
+// @param {List} $property - Params
+// @param {size} $time - Params
+// @require {mixin} css3-prefix
+@mixin transition($params) {
+    @include css3-prefix('transition', $params);
+}
+
+// 9: Keyframes
+// 
+// @param {*} $animation-name - Animation name
+// @content [Animation css]
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+// 10: Animation
+// 
+// @param {*} $str - name duration timing-function delay iteration-count direction fill-mode play-state ([http://www.w3schools.com/cssref/css3_pr_animation.asp](http://www.w3schools.com/cssref/css3_pr_animation.asp))
+// @require {mixin} css3-prefix
+@mixin animation($str) {
+    @include css3-prefix('animation', $str);
+}
+
+@mixin animation-fill-mode($str) {
+    @include css3-prefix('animation-fill-mode', $str);
+}
+
+/// 11: Shorthand mixin for offset positioning
+//
+/// @param {String} $position - Either `relative`, `absolute` or `fixed`
+/// @param {Length} $top [null] - Top offset
+/// @param {Length} $right [null] - Right offset
+/// @param {Length} $bottom [null] - Bottom offset
+/// @param {Length} $left [null] - Left offset
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}

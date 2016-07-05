@@ -1,0 +1,78 @@
+@mixin generate-spacing-classes($property-type, $property-abvt, $property-direction, $values) {
+    @include small {
+        @each $value in $values {
+            @if($property-direction == '' or $property-direction == null) {
+                .#{$property-abvt}-s-#{$value} {
+                    #{$property-type}: #{$value}px;
+                }
+            }
+            @else {
+                .#{$property-abvt}-s-#{$value} {
+                    #{$property-type}-#{$property-direction}: #{$value}px;
+                }
+            }
+        }
+    }
+    @include medium {
+        @each $value in $values {
+            @if($property-direction == '' or $property-direction == null) {
+                .#{$property-abvt}-m-#{$value} {
+                    #{$property-type}: #{$value}px;
+                }
+            }
+            @else {
+                .#{$property-abvt}-m-#{$value} {
+                    #{$property-type}-#{$property-direction}: #{$value}px;
+                }
+            }
+        }
+    }
+    @include large {
+        @each $value in $values {
+            @if($property-direction == '' or $property-direction == null) {
+                .#{$property-abvt}-lg-#{$value} {
+                    #{$property-type}: #{$value}px;
+                }
+                .#{$property-abvt}-#{$value} {
+                    #{$property-type}: #{$value}px;
+                }
+            }
+            @else {
+                .#{$property-abvt}-lg-#{$value} {
+                    #{$property-type}-#{$property-direction}: #{$value}px;
+                }
+                .#{$property-abvt}-#{$value} {
+                    #{$property-type}-#{$property-direction}: #{$value}px;
+                }
+            }
+        }
+    }
+    @include xlarge {
+        @each $value in $values {
+            @if($property-direction == '' or $property-direction == null) {
+                .#{$property-abvt}-xl-#{$value} {
+                    #{$property-type}: #{$value}px;
+                }
+            }
+            @else {
+                .#{$property-abvt}-xl-#{$value} {
+                    #{$property-type}-#{$property-direction}: #{$value}px;
+                }
+            }
+        }
+    }
+}
+
+$values:(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 80);
+@include generate-spacing-classes('margin', 'm-t', 'top', $values);
+@include generate-spacing-classes('margin', 'm-l', 'left', $values);
+@include generate-spacing-classes('margin', 'm-b', 'bottom', $values);
+@include generate-spacing-classes('margin', 'm-r', 'right', $values);
+@include generate-spacing-classes('margin', 'm', '', $values);
+
+
+@include generate-spacing-classes('padding', 'p-t', 'top', $values);
+@include generate-spacing-classes('padding', 'p-l', 'left', $values);
+@include generate-spacing-classes('padding', 'p-b', 'bottom', $values);
+@include generate-spacing-classes('padding', 'p-r', 'right', $values);
+@include generate-spacing-classes('padding', 'p', '', $values);

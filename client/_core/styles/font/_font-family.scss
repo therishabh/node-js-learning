@@ -1,0 +1,16 @@
+//Sass for include all font family
+
+
+
+// (montserrat)
+@include font-face('montserrat-semibold', '../fonts/montserrat/Montserrat-SemiBold');
+@include font-face('montserrat-ultraLight', '../fonts/montserrat/Montserrat-UltraLight');
+@include font-face('montserrat-extraBold', '../fonts/montserrat/Montserrat-ExtraBold');
+@include font-face('montserrat-regular', '../fonts/montserrat/Montserrat-Regular');
+@include font-face('montserrat-light', '../fonts/montserrat/Montserrat-Light');
+@include font-face('montserrat-bold', '../fonts/montserrat/Montserrat-Bold');
+@include font-face('montserrat-hairline', '../fonts/montserrat/Montserrat-Hairline');
+@include font-face('montserrat-black', '../fonts/montserrat/Montserrat-Black');
+
+// (VarelaRound)
+@include font-face('varelaRound-regular', '../fonts/VarelaRound/VarelaRound-Regular');
