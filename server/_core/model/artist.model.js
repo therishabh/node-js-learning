@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
 var artistSchema = new schema({
+    artist_id : {type:Number},
     name: { type: String, trim: true },
     description: { type: String },
     email: { type: Array },
