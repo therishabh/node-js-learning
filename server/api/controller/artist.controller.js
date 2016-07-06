@@ -22,7 +22,7 @@ module.exports = {
 
     getAllArtist: function(req, res) {
         var deferred = Q.defer();
-        Artist.find({ status: 1 }, { created_at: 0, updated_at: 0, status: 0, __v: 0 })
+        Artist.find({ status: 1, is_active: 1 }, { created_at: 0, updated_at: 0, status: 0, __v: 0, is_active: 0 })
             .exec(function(err, data) {
                 if (err) {
                     // console.log(err);
@@ -39,7 +39,8 @@ module.exports = {
 
     getTotalRowsCount: function(req, res) {
         var deferred = Q.defer();
-        Artist.count({ status: 1 })
+        var query = req.query || { status: 1, is_active: 1 }
+        Artist.count(req.query)
             .exec(function(err, data) {
                 if (err) {
                     console.log(err)
@@ -56,13 +57,14 @@ module.exports = {
 
     getArtistWithLimit: function(req, res) {
         var deferred = Q.defer();
-        Artist.find({ status: 1 }, { created_at: 0, updated_at: 0, status: 0, __v: 0 })
+        Artist.find(req.query, { created_at: 0, updated_at: 0, status: 0, __v: 0, is_active: 0})
             .skip(req.skip)
             .limit(req.limit)
             .exec(function(err, data) {
                 if (err) {
                     // console.log(err);
                 } else {
+
                     // console.log(data);
                 }
             }).then(function(result) {
@@ -71,5 +73,5 @@ module.exports = {
                 deferred.reject(error);
             });
         return deferred.promise;
-    },
+    }
 }

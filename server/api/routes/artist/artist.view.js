@@ -10,7 +10,8 @@ router.route('/:type')
         if (req.params.type === 'all') {
             var totalCount = 0;
             var data = "";
-            Artist.getTotalRowsCount().then(function(result) {
+            var queryData = { query: { status: 1, is_active: 1 } };
+            Artist.getTotalRowsCount(queryData).then(function(result) {
                 totalCount = result;
                 Artist.getAllArtist().then(function(result) {
                     data = result;
@@ -33,29 +34,39 @@ router.route('/')
         var page = parseInt(req.query.page) || 1;
         var limit = 10;
         var skip = (page - 1) * limit;
+        var locationQuery = {};
+        var categoryQuery = {};
 
-        if (req.query.location) {}
-        if (req.query.category) {} else {
-            var passData = {
-                limit: limit,
-                skip: skip
-            }
-            Artist.getTotalRowsCount().then(function(result) {
-                totalCount = result;
-                Artist.getArtistWithLimit(passData).then(function(result) {
-                    data = result;
-                    var responseData = {
-                        count: totalCount,
-                        next_page : page + 1,
-                        result: data
-                    }
-                    res.json(responseData);
-                }, function(error) {
-                    res.json(error);
-                });
+        if (req.query.location) {
+            var locationQuery = { location: { $in: (req.query.location).split(",") } }
+        }
+        if (req.query.category) {
+            var categoryQuery = { category: { $in: (req.query.category).split(",") } }
+        }
+        var query = { $and: [{ status: 1, is_active: 1 }, locationQuery, categoryQuery] };
+        
+        var passData = {
+            limit: limit,
+            skip: skip,
+            query: query
+        }
+        
+        Artist.getTotalRowsCount(passData).then(function(result) {
+            totalCount = result;
+            Artist.getArtistWithLimit(passData).then(function(result) {
+                data = result;
+                var responseData = {
+                    count: totalCount,
+                    next_page: page + 1,
+                    result: data
+                }
+                res.json(responseData);
             }, function(error) {
                 res.json(error);
             });
-        }
+        }, function(error) {
+            res.json(error);
+        });
+
     });
 module.exports = router;
