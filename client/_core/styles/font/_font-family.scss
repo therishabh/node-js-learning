@@ -14,3 +14,14 @@
 
 // (VarelaRound)
 @include font-face('varelaRound-regular', '../fonts/VarelaRound/VarelaRound-Regular');
+
+
+// (gotham)
+@include font-face('gothamRound-bold', '../fonts/GothamRound/GothamRound-Bold');
+@include font-face('gothamRound-boldItalic', '../fonts/GothamRound/GothamRound-BoldItalic');
+@include font-face('gothamRound-book', '../fonts/GothamRound/GothamRound-Book');
+@include font-face('gothamRound-bookItalic', '../fonts/GothamRound/GothamRound-BookItalic');
+@include font-face('gothamRound-light', '../fonts/GothamRound/GothamRound-Light');
+@include font-face('gothamRound-lightItalic', '../fonts/GothamRound/GothamRound-LightItalic');
+@include font-face('gothamRound-medium', '../fonts/GothamRound/gothamRound-Medium');
+@include font-face('gothamRound-mediumItalic', '../fonts/GothamRound/GothamRound-MediumItalic');

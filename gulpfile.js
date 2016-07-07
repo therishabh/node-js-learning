@@ -18,7 +18,6 @@ var adminJsPath = [
     './client/_core/vendor/angular-sanitize/angular-sanitize.js',
     './client/_core/vendor/angular-animate/angular-animate.js',
     './client/_core/vendor/angular-touch/angular-touch.js',
-    './client/_core/vendor/material-design-lite/material.min.js',
     './client/admin/scripts/**/**/*.js'
 ];
 
@@ -29,7 +28,7 @@ var adminCcsPath = {
         './client/_core/vendor/material-design-lite/material.min.css'
     ],
     'app': [
-        './client/core/styles/**/**/**/*.scss',
+        './client/_core/styles/**/**/**/*.scss',
         './client/admin/styles/**/**/**/*.scss'
     ]
 };
@@ -37,9 +36,14 @@ var adminJadePath = ['./client/admin/pages/**/**/**/*.jade'];
 
 
 var userJsPath = [
-    './client/_core/vendor/jquery/dist/jquery.js',
-    './client/_core/vendor/material-design-lite/material.js',
-    './client/user/scripts/**/**/*.js'
+   './client/_core/vendor/angular/angular.js',
+    './client/_core/vendor/angular-sanitize/angular-sanitize.js',
+    './client/_core/vendor/angular-animate/angular-animate.js',
+    './client/_core/vendor/angular-touch/angular-touch.js',
+    './client/_core/scripts/**/*.js',
+    './client/user/scripts/app/*.js',
+    './client/user/scripts/**/**/**/*.js',
+    './client/user/pages/**/**/**/*.js'
 ];
 
 var userCcsPath = {
@@ -57,7 +61,7 @@ var userJadePath = ['./client/user/pages/**/**/**/*.jade'];
 
 
 var fontPath = [
-    './client/core/fonts/**/**/*.*'
+    './client/_core/fonts/**/**/*.*'
 ];
 
 
@@ -202,7 +206,7 @@ gulp.task('fonts', function() {
 // Core images Move
 //=============
 gulp.task('core-images', function() {
-    gulp.src('./client/core/images/**/**/**/*.*')
+    gulp.src('./client/_core/images/**/**/**/*.*')
         .pipe(gulp.dest('./www/core/images/'));
 });
 
@@ -293,7 +297,7 @@ gulp.task('default', [
         gulp.run('user-jade');
     });
 
-    gulp.watch(adminJsPath.app, function() {
+    gulp.watch(adminJsPath, function() {
         gulp.run('admin-js-app');
     });
 
@@ -305,7 +309,7 @@ gulp.task('default', [
         gulp.run('user-jade');
     });
 
-    gulp.watch(userJsPath.app, function() {
+    gulp.watch(userJsPath, function() {
         gulp.run('user-js-app');
     });
 

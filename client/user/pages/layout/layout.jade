@@ -1,5 +1,5 @@
 doctype html
-html
+html(ng-app="getMyArtist")
 	head
 		title Get my Artist
 		link(rel="stylesheet", href="/user/css/vendor.min.css")
@@ -7,10 +7,8 @@ html
 
 		block head
 	body
-		div(class="mdl-layout mdl-js-layout mdl-layout--fixed-header")
-			include ../components/header/_header.jade
-			main(class="mdl-layout__content")
-				block content
-				include ../components/footer/_footer.jade
-
-	script(type='text/javascript', src='/user/js/app.min.js')
+		script(type='text/javascript', src='/user/js/app.min.js')
+		div
+			custom-header
+			block content
+			include ../components/footer/_footer.jade
