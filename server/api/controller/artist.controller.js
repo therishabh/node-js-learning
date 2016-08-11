@@ -40,7 +40,7 @@ module.exports = {
     getTotalRowsCount: function(req, res) {
         var deferred = Q.defer();
         var query = req.query || { status: 1, is_active: 1 }
-        Artist.count(req.query)
+        Artist.count(query)
             .exec(function(err, data) {
                 if (err) {
                     console.log(err)
