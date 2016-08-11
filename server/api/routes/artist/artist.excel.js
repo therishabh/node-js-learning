@@ -20,16 +20,15 @@ router.route('/')
         var base_url = pathService.getBasePath();
 
         Flickr.authenticate(flickrOptions, function(error, flickr) {
-            debugger;
             if (error) {
                 return console.error(error);
             } else {
                 pathService.getExcelData('reverb-sample.xlsx').then(function(result) {
-                    debugger;
                     var users_data = result.data;
                     var valid_count = result.valid_count;
                     var artist_id = 1001;
                     var count = 0;
+                    var allData = [];
                     for (var x = 1; x < users_data.length; x++) {
                         if (users_data[x][0] != "") {
                             (function(x) {
@@ -107,12 +106,13 @@ router.route('/')
                                             location: users_data[x][13].split("/"),
                                             image: artist_image,
                                         }
+                                        allData.push(artistData);
                                         var newArtist = new Artist(artistData);
                                         newArtist.save();
                                         artist_id++;
 
                                         if(count === valid_count){
-                                            res.json(artistData);
+                                            res.json(allData);
                                         }
                                     }
                                 });
