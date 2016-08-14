@@ -11,12 +11,13 @@ var path = require('path');
 
 
 //***** Log File ******
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 //***** Log File ******
 
 
 
 //***** Database Connectivity *******
+mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.database);
 //***** Database Connectivity *******
 

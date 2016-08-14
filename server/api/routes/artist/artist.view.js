@@ -38,6 +38,8 @@ router.route('/')
         var categoryQuery = {};
 
         if (req.query.location) {
+            var regexFromMyArray = new RegExp((req.query.location).split(","));
+            debugger;
             var locationQuery = { location: { $in: (req.query.location).split(",") } }
         }
         if (req.query.category) {
@@ -50,23 +52,23 @@ router.route('/')
             skip: skip,
             query: query
         }
-        
-        Artist.getTotalRowsCount(passData).then(function(result) {
-            totalCount = result;
-            Artist.getArtistWithLimit(passData).then(function(result) {
-                data = result;
-                var responseData = {
-                    count: totalCount,
-                    next_page: page + 1,
-                    result: data
-                }
-                res.json(responseData);
-            }, function(error) {
-                res.json(error);
-            });
-        }, function(error) {
-            res.json(error);
-        });
+        debugger;
+        // Artist.getTotalRowsCount(passData).then(function(result) {
+        //     totalCount = result;
+        //     Artist.getArtistWithLimit(passData).then(function(result) {
+        //         data = result;
+        //         var responseData = {
+        //             count: totalCount,
+        //             next_page: page + 1,
+        //             result: data
+        //         }
+        //         res.json(responseData);
+        //     }, function(error) {
+        //         res.json(error);
+        //     });
+        // }, function(error) {
+        //     res.json(error);
+        // });
 
     });
 module.exports = router;
