@@ -6,11 +6,11 @@ var pathService = require('./../../service/service');
 var Artist = require('./../../../_core/model/artist.model');
 var Flickr = require("flickrapi"),
     flickrOptions = {
-        api_key: "e8598a898e309654886307541f7a15e4",
-        secret: "e955aee9df42ca2d",
-        user_id: "145725359@N08",
-        access_token: "72157671092113111-6fa0bb35979ca135",
-        access_token_secret: "d06d87105a2a77e9",
+        api_key: "2fb9e85f1290cdd98114f6026cb08213",
+        secret: "0f517211adedba0b",
+        user_id: "143739185@N03",
+        access_token: "72157669407261034-295d931426e27114",
+        access_token_secret: "1a51ea9630c80ccf",
         permissions: "write"
     };
 
