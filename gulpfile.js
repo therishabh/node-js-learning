@@ -3,16 +3,24 @@ var gulp = require('gulp');
 var requireDir = require('require-dir');
 var tasks = requireDir('./gulp-tasks');
 
-gulp.task('user', [
+gulp.task('dev', [
+    'browser-sync',
+    'nodemon',
     'user-js',
     'user-css',
     'user-jade',
-    'user-fonts',
     'user-images',
-    'user-browser-sync',
-    'user-nodemon',
-    'user-watch'
+    'user-watch',
+    'admin-js',
+    'admin-css-vendor',
+    'admin-css-app',
+    'admin-jade',
+    'core-fonts',
+    'core-images',
+    'core-jade',
+    'admin-watch'
+
 ]);
 
-gulp.task('admin', [
+gulp.task('prod', [
 ]);
