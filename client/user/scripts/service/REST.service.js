@@ -1,4 +1,5 @@
-var $ = require('jquery');
+let $ = require('jquery');
+let apiEndPoint = '/api/';
 
 module.exports = {
 	get: get,
@@ -10,7 +11,7 @@ function get(url) {
 	return new Promise(function(success, error) {
 
 		$.ajax({
-			url: url,
+			url: apiEndPoint + url,
 			dataType: 'json',
 			success: success,
 			error: error,
