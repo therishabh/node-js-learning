@@ -11,6 +11,8 @@ class BrowsePage extends React.Component {
 
     const {artists} = this.props;
 
+    debugger;
+
     return (
       <div>
         <artistsList artists={artists}/>
