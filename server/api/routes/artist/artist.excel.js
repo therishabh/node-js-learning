@@ -8,9 +8,9 @@ var Flickr = require("flickrapi"),
     flickrOptions = {
         api_key: "2fb9e85f1290cdd98114f6026cb08213",
         secret: "0f517211adedba0b",
-        user_id: "143739185@N03",
-        access_token: "72157669407261034-295d931426e27114",
-        access_token_secret: "1a51ea9630c80ccf",
+        // user_id: "143739185@N03",
+        // access_token: "72157671477889850-374a3233bcb19ff3",
+        // access_token_secret: "e120b483a3b9f5d8",
         permissions: "write"
     };
 
