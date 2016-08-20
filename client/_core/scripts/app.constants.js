@@ -1,5 +1,5 @@
 window.config = {
-    apiPoint: '/api',
+    apiPoint: '/api/',
     templateBase: '/www/user/pages/',
     imageBase: '/www/core/images/'
 };
