@@ -8,9 +8,9 @@ var Flickr = require("flickrapi"),
     flickrOptions = {
         api_key: "2fb9e85f1290cdd98114f6026cb08213",
         secret: "0f517211adedba0b",
-        // user_id: "143739185@N03",
-        // access_token: "72157671477889850-374a3233bcb19ff3",
-        // access_token_secret: "e120b483a3b9f5d8",
+        user_id: "143739185@N03",
+        access_token: "72157671477889850-374a3233bcb19ff3",
+        access_token_secret: "e120b483a3b9f5d8",
         permissions: "write"
     };
 
@@ -89,6 +89,17 @@ router.route('/')
                                         for (var abc = 0; abc < result.length; abc++) {
                                             artist_image.push(result[abc]);
                                         }
+
+                                        var cities = [];
+                                        var locationArray = users_data[x][13].split("/")
+                                        for(var cityCount = 0; cityCount < locationArray.length; cityCount++){
+                                            cities.push(locationArray[cityCount].toLowerCase());
+                                        }
+                                        var categories = [];
+                                        var categoryArray = users_data[x][12].split("/")
+                                        for(var categoryCount = 0; categoryCount < categoryArray.length; categoryCount++){
+                                            categories.push(categoryArray[categoryCount].toLowerCase());
+                                        }
                                         var artistData = {
                                             artist_id: artist_id,
                                             name: users_data[x][0],
@@ -102,8 +113,8 @@ router.route('/')
                                                 website: users_data[x][7]
                                             },
                                             contact: contactPersonData,
-                                            category: users_data[x][12].split("/"),
-                                            location: users_data[x][13].split("/"),
+                                            category: categories,
+                                            location: cities,
                                             image: artist_image,
                                         }
                                         allData.push(artistData);
