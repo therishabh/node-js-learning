@@ -1,14 +1,42 @@
-import React from 'react';
-import {Link} from 'react-router';
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as artistsActions from './../../scripts/actions/artistsActions';
+import artistsList from './artistsList';
+import {browserHistory} from 'react-router';
 
 class BrowsePage extends React.Component {
-  render() {
+
+    render() {
+
+    const {artists} = this.props;
+
+    debugger;
+
     return (
-      <div className="jumbotron">
-        <h1>GMA BrowsePage</h1>
+      <div>
+        <artistsList artists={artists}/>
       </div>
     );
   }
 }
 
-export default BrowsePage;
+BrowsePage.propTypes = {
+  artists: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+  return {
+    artists: state.artists
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+
+  return {
+    actions: bindActionCreators(artistsActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BrowsePage);
