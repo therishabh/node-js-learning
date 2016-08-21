@@ -28,7 +28,8 @@ let parameters = function(filters, isLoadMore) {
 
 module.exports = {
     getArtists: getArtists,
-    getMoreArtists: getMoreArtists
+    getMoreArtists: getMoreArtists,
+    getFeaturedArtists: getFeaturedArtists
 }
 
 
@@ -40,6 +41,7 @@ function getArtists(filters) {
             url: apiEndPoint + 'artist/list/',
             data: parameters(filters, false),
             dataType: 'json',
+            cache:true,
             success: success,
             error: error,
         })
@@ -55,6 +57,23 @@ function getMoreArtists(filters) {
             url: apiEndPoint + 'artist/list/',
             data: { page: 2 },
             dataType: 'json',
+            cache:true,
+            success: success,
+            error: error,
+        })
+
+    });
+}
+
+function getFeaturedArtists(filters) {
+
+    return new Promise(function(success, error) {
+
+        $.ajax({
+            url: apiEndPoint + 'artist/list/',
+            data: { featured: true },
+            dataType: 'json',
+            cache:true,
             success: success,
             error: error,
         })

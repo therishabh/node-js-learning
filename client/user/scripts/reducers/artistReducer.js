@@ -7,7 +7,6 @@ export default function artistReducer(state = initialState.artists, action) {
             return action.artists;
 
         case types.LOAD_MORE_ARTISTS_SUCCESS:
-            debugger;
 
             return  [...state, ...action.artists];
 

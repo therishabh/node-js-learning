@@ -2,8 +2,7 @@
 
 import 'babel-polyfill';
 import { Router, browserHistory } from 'react-router';
-import configureStore from './../store/configureStore';
-import * as ArtistActions from './../actions/ArtistsActions'; 
+import configureStore from './../store/configureStore'; 
 import {Provider} from 'react-redux';
 import routes from './app.routes';
 import React from 'react';

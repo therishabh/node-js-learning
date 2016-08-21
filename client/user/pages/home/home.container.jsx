@@ -1,14 +1,49 @@
-import React from 'react';
-import {Link} from 'react-router';
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as artistsActions from './../../scripts/actions/ArtistsActions';
+import ArtistList from './../../scripts/components/ArtistCardList/ArtistCardList';
+import {browserHistory} from 'react-router';
 
 class HomePage extends React.Component {
-  render() {
+
+  constructor(props, context) {
+    super(props, context);
+  }
+
+  componentWillMount() {
+
+    this.props.actions.loadFeaturedArtists();
+  }
+
+    render() {
+
+    const {featuredArtists} = this.props;
+
     return (
-      <div className="jumbotron">
-        <h1>GMA Home</h1>
+      <div>
+        <ArtistList artists={featuredArtists} />
       </div>
     );
   }
 }
 
-export default HomePage;
+HomePage.propTypes = {
+  actions: PropTypes.object.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+
+  return {
+    featuredArtists: state.featuredArtists
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+
+  return {
+    actions: bindActionCreators(artistsActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

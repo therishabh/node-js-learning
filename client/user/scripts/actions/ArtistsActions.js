@@ -10,6 +10,10 @@ export function loadMoreArtistsSuccess(artists) {
     return { type: types.LOAD_MORE_ARTISTS_SUCCESS, artists };
 }
 
+export function loadFeaturedArtistsSuccess(featuredArtists) {
+    return { type: types.LOAD_FEATURED_ARTISTS_SUCCESS, featuredArtists };
+}
+
 export function loadArtists() {
     return dispatch => {
 
@@ -31,6 +35,19 @@ export function loadMoreArtists() {
 
         return ArtistApi.getMoreArtists().then(artists => {
             dispatch(loadMoreArtistsSuccess(artists.result));
+        }).catch(error => {
+            throw (error);
+        });
+    };
+}
+
+export function loadFeaturedArtists() {
+    return dispatch => {
+
+        dispatch(beginAjaxCall());
+
+        return ArtistApi.getFeaturedArtists().then(featuredArtists => {
+            dispatch(loadFeaturedArtistsSuccess(featuredArtists.result));
         }).catch(error => {
             throw (error);
         });

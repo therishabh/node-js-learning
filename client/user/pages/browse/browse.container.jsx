@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as artistsActions from './../../scripts/actions/ArtistsActions';
-import ArtistList from './ArtistList';
+import ArtistList from './../../scripts/components/ArtistCardList/ArtistCardList';
 import {browserHistory} from 'react-router';
 
 class BrowsePage extends React.Component {
@@ -39,7 +39,6 @@ class BrowsePage extends React.Component {
 }
 
 BrowsePage.propTypes = {
-  artists: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
