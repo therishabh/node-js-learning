@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as artistsActions from './../../scripts/actions/artistsActions';
+import * as artistsActions from './../../scripts/actions/ArtistsActions';
 import ArtistList from './ArtistList';
 import {browserHistory} from 'react-router';
 

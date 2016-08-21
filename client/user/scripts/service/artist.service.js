@@ -10,7 +10,7 @@ function getAllArtists() {
     return new Promise(function(success, error) {
 
         $.ajax({
-            url: apiEndPoint + '/artist/list/all/',
+            url: apiEndPoint + '/artist/list/',
             dataType: 'json',
             success: success,
             error: error,
