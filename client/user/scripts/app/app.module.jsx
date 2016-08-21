@@ -10,7 +10,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const store = configureStore();
-store.dispatch(ArtistActions.loadArtists());
 
 ReactDOM.render(
 	<Provider store={store}>

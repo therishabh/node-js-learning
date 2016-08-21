@@ -6,6 +6,21 @@ import ArtistList from './ArtistList';
 import {browserHistory} from 'react-router';
 
 class BrowsePage extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.loadMore = this.loadMore.bind(this);
+  }
+
+  componentWillMount() {
+
+    this.props.actions.loadArtists();
+  }
+
+  loadMore() {
+
+    this.props.actions.loadMoreArtists();
+
+  }
 
     render() {
 
@@ -14,6 +29,10 @@ class BrowsePage extends React.Component {
     return (
       <div>
         <ArtistList artists={artists} />
+        <input type="button"
+               value="Load More"
+               className="btn btn-primary"
+               onClick={this.loadMore}/>
       </div>
     );
   }
@@ -25,6 +44,7 @@ BrowsePage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+
   return {
     artists: state.artists
   };
