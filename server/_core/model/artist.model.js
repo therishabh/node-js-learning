@@ -22,7 +22,7 @@ var artistSchema = new schema({
         landline: { type: Array }
     }],
     image : {type:Array},
-    featured: { type: Boolean },
+    featured: { type: Boolean, default: 0 },
     is_active: { type: Boolean, default: 1 },
     status: { type: Boolean, default: 1 }
 }, {

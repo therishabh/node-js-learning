@@ -36,39 +36,40 @@ router.route('/')
         var skip = (page - 1) * limit;
         var locationQuery = {};
         var categoryQuery = {};
+        var featuredQuery = {};
 
         if (req.query.location) {
-            var regexFromMyArray = new RegExp((req.query.location).split(","));
-            debugger;
             var locationQuery = { location: { $in: (req.query.location).split(",") } }
         }
         if (req.query.category) {
             var categoryQuery = { category: { $in: (req.query.category).split(",") } }
         }
-        var query = { $and: [{ status: 1, is_active: 1 }, locationQuery, categoryQuery] };
-        
+        if (req.query.featured) {
+            var featuredQuery = { featured: req.query.featured }
+        }
+        var query = { $and: [{ status: 1, is_active: 1 }, locationQuery, categoryQuery, featuredQuery] };
+
         var passData = {
             limit: limit,
             skip: skip,
             query: query
         }
-        debugger;
-        // Artist.getTotalRowsCount(passData).then(function(result) {
-        //     totalCount = result;
-        //     Artist.getArtistWithLimit(passData).then(function(result) {
-        //         data = result;
-        //         var responseData = {
-        //             count: totalCount,
-        //             next_page: page + 1,
-        //             result: data
-        //         }
-        //         res.json(responseData);
-        //     }, function(error) {
-        //         res.json(error);
-        //     });
-        // }, function(error) {
-        //     res.json(error);
-        // });
+        Artist.getTotalRowsCount(passData).then(function(result) {
+            totalCount = result;
+            Artist.getArtistWithLimit(passData).then(function(result) {
+                data = result;
+                var responseData = {
+                    count: totalCount,
+                    next_page: page + 1,
+                    result: data
+                }
+                res.json(responseData);
+            }, function(error) {
+                res.json(error);
+            });
+        }, function(error) {
+            res.json(error);
+        });
 
     });
 module.exports = router;
