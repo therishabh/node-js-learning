@@ -21,9 +21,9 @@ class HomePage extends React.Component {
     const {featuredArtists} = this.props;
 
     return (
-      <div>
+      <section id="home">
         <ArtistList artists={featuredArtists} />
-      </div>
+      </section>
     );
   }
 }

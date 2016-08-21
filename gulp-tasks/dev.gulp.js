@@ -299,7 +299,7 @@ gulp.task('admin-watch', function() {
 
     gulp.watch(['./client/**/**/**/*.jade'], reload);
     gulp.watch(['./server/**/**/*.js'], reload);
-    gulp.watch(['./www/admin/css/*.scss'], reload);
+    gulp.watch(['./www/admin/css/*.css'], reload);
     gulp.watch(['./www/admin/scripts/*.js'], reload);
     gulp.watch(['./www/admin/js/*.js'], reload);
     gulp.watch(['./www/admin/pages/**/*.html'], reload);
