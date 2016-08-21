@@ -8,9 +8,9 @@ var Flickr = require("flickrapi"),
     flickrOptions = {
         api_key: "2fb9e85f1290cdd98114f6026cb08213",
         secret: "0f517211adedba0b",
-        // user_id: "143739185@N03",
-        // access_token: "72157671477889850-374a3233bcb19ff3",
-        // access_token_secret: "e120b483a3b9f5d8",
+        user_id: "143739185@N03",
+        access_token: "72157671477889850-374a3233bcb19ff3",
+        access_token_secret: "e120b483a3b9f5d8",
         permissions: "write"
     };
 
@@ -32,7 +32,7 @@ router.route('/')
                     for (var x = 1; x < users_data.length; x++) {
                         if (users_data[x][0] != "") {
                             (function(x) {
-                                
+
                                 //get contact Person Data.
                                 var contactPersonData = [];
                                 var contactPersonName = users_data[x][8].split("/");
@@ -111,7 +111,7 @@ router.route('/')
                                         newArtist.save();
                                         artist_id++;
 
-                                        if(count === valid_count){
+                                        if (count === valid_count) {
                                             res.json(allData);
                                         }
                                     }

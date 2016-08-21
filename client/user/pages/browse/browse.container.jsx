@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as artistsActions from './../../scripts/actions/artistsActions';
-import artistsList from './artistsList';
+import ArtistList from './ArtistList';
 import {browserHistory} from 'react-router';
 
 class BrowsePage extends React.Component {
@@ -11,11 +11,9 @@ class BrowsePage extends React.Component {
 
     const {artists} = this.props;
 
-    debugger;
-
     return (
       <div>
-        <artistsList artists={artists}/>
+        <ArtistList artists={artists} />
       </div>
     );
   }
