@@ -17,7 +17,7 @@ var minifyCSS = require('gulp-cssnano'),
 
 var paths = {
     user: {
-        css: ['client/**/**/**/**/**/*.scss'],
+        css: ['../client/**/**/**/**/**/*.scss'],
         js: ['./client/user/**/**/**/*.js',
             './client/user/**/**/**/*.jsx'
         ],
@@ -148,11 +148,11 @@ gulp.task('user-images', function() {
 
 gulp.task('user-watch', function() {
 
+    console.log('user-watch');
+
     gulp.watch(paths.user.css, ['user-css']);
 
-    gulp.watch(paths.user.js, function() {
-        gulp.run('user-js');
-    });
+    gulp.watch(paths.user.js, ['user-js']);
 
     gulp.watch(['./client/**/**/**/*.jade'], reload);
     gulp.watch(['./server/**/**/*.js'], reload);
