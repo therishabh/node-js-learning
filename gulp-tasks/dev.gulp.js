@@ -17,7 +17,7 @@ var minifyCSS = require('gulp-cssnano'),
 
 var paths = {
     user: {
-        css: ['./client/**/styles/**/**/**/*.scss'],
+        css: './client/**/**/**/**/**/*.scss',
         js: ['./client/user/**/**/**/*.js',
             './client/user/**/**/**/*.jsx'
         ],
