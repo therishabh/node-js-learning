@@ -17,12 +17,12 @@ var minifyCSS = require('gulp-cssnano'),
 
 var paths = {
     user: {
-        css: './client/**/**/**/**/**/*.scss',
+        css: ['client/**/**/**/**/**/*.scss'],
         js: ['./client/user/**/**/**/*.js',
             './client/user/**/**/**/*.jsx'
         ],
         html: [],
-        imagees: []
+        images: []
     },
     admin: {
         css: {
@@ -30,7 +30,7 @@ var paths = {
                 './client/_core/vendor/font-awesome/css/font-awesome.css'
             ],
             app: ['./client/_core/styles/**/**/**/*.scss',
-                './client/admin/styles/**/**/**/*.scss'
+                './client/admin/**/**/**/**/*.scss'
             ]
         },
         js: ['./client/_core/vendor/angular/angular.js',
@@ -148,9 +148,7 @@ gulp.task('user-images', function() {
 
 gulp.task('user-watch', function() {
 
-    gulp.watch(paths.user.css, function() {
-        gulp.run('user-css');
-    });
+    gulp.watch(paths.user.css, ['user-css']);
 
     gulp.watch(paths.user.js, function() {
         gulp.run('user-js');
