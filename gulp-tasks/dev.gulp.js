@@ -17,12 +17,12 @@ var minifyCSS = require('gulp-cssnano'),
 
 var paths = {
     user: {
-        css: ['./client/**/styles/**/**/**/*.scss'],
+        css: ['../client/**/**/**/**/**/*.scss'],
         js: ['./client/user/**/**/**/*.js',
             './client/user/**/**/**/*.jsx'
         ],
         html: [],
-        imagees: []
+        images: []
     },
     admin: {
         css: {
@@ -146,13 +146,11 @@ gulp.task('user-images', function() {
 
 gulp.task('user-watch', function() {
 
-    gulp.watch(paths.user.css, function() {
-        gulp.run('user-css');
-    });
+    console.log('user-watch');
 
-    gulp.watch(paths.user.js, function() {
-        gulp.run('user-js');
-    });
+    gulp.watch(paths.user.css, ['user-css']);
+
+    gulp.watch(paths.user.js, ['user-js']);
 
     gulp.watch(['./client/**/**/**/*.jade'], reload);
     gulp.watch(['./server/**/**/*.js'], reload);
@@ -297,7 +295,7 @@ gulp.task('admin-watch', function() {
 
     gulp.watch(['./client/**/**/**/*.jade'], reload);
     gulp.watch(['./server/**/**/*.js'], reload);
-    gulp.watch(['./www/admin/css/*.scss'], reload);
+    gulp.watch(['./www/admin/css/*.css'], reload);
     gulp.watch(['./www/admin/scripts/*.js'], reload);
     gulp.watch(['./www/admin/js/*.js'], reload);
     gulp.watch(['./www/admin/pages/**/*.html'], reload);

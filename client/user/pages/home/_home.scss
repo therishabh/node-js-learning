@@ -1,0 +1,12 @@
+#home {
+
+	background: blue;
+
+	@import 'Categories/Categories',
+	'FeaturedArtists/FeaturedArtists',
+	'HowGMA/HowGMA',
+	'SEM/SEM',
+	'Testimonials/Testimonials',
+	'TopBanner/TopBanner',
+	'WhyGMA/WhyGMA';
+}

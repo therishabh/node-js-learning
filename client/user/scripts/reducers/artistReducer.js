@@ -6,6 +6,10 @@ export default function artistReducer(state = initialState.artists, action) {
         case types.LOAD_ARTISTS_SUCCESS:
             return action.artists;
 
+        case types.LOAD_MORE_ARTISTS_SUCCESS:
+
+            return  [...state, ...action.artists];
+
         default:
             return state;
     }

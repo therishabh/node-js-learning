@@ -17,8 +17,7 @@ gulp.task('dev', [
     'admin-jade',
     'core-fonts',
     'core-images',
-    'core-jade',
-    'admin-watch'
+    'core-jade'
 
 ]);
 

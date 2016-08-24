@@ -1,32 +1,49 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as artistsActions from './../../scripts/actions/artistsActions';
-import artistsList from './artistsList';
+import * as artistsActions from './../../scripts/actions/ArtistsActions';
+import ArtistList from './../../scripts/components/ArtistCardList/ArtistCardList';
 import {browserHistory} from 'react-router';
 
 class BrowsePage extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.loadMore = this.loadMore.bind(this);
+  }
+
+  componentWillMount() {
+
+    this.props.actions.loadArtists();
+  }
+
+  loadMore() {
+
+    this.props.actions.loadMoreArtists();
+
+  }
 
     render() {
 
     const {artists} = this.props;
 
-    debugger;
-
     return (
       <div>
-        <artistsList artists={artists}/>
+        <ArtistList artists={artists} />
+        <input type="button"
+               value="Load More"
+               className="btn btn-primary"
+               onClick={this.loadMore}/>
       </div>
     );
   }
 }
 
 BrowsePage.propTypes = {
-  artists: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
+
   return {
     artists: state.artists
   };
