@@ -1,0 +1,27 @@
+section#main-content-area {
+    padding-left: 200px;
+    padding-top: calc(55px +  67px);
+    background-color: #e4e5e6;
+    padding-bottom: 20px;
+    .breadcrumb {
+        position: relative;
+        border-bottom: 1px solid #cfd8dc;
+        margin: 0;
+        margin-bottom: 20px;
+        padding: .75rem 1rem;
+        list-style: none;
+        position: fixed;
+        background-color: #fff;
+        width: calc(100vw - 200px);
+        top: 55px;
+        z-index: 101;
+        .breadcrumb-item {
+            font-family: $font-mo-light;
+            font-size: 15px;
+            color: $font-color;
+        }
+    }
+    .container-fluid {
+        padding: 0 30px;
+    }
+}

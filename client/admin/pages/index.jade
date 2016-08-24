@@ -1,1 +1,15 @@
-div Hello Admin you do
+html
+	head
+		title Get My Artist Admin Panel
+		//- material design Icon cdn
+		link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+		link(rel="stylesheet", href="css/vendor.min.css")
+		link(rel="stylesheet", href="css/app.min.css")
+
+	body(ng-app="getMyArtist")
+		
+		include header/header.jade
+
+		include side-panel/side-panel.jade
+
+		include content-area/content-area.jade

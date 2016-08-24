@@ -1,0 +1,58 @@
+header {
+    height: 55px;
+    background-color: #fff;
+    border-bottom: 1px solid #cfd8dc;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    .logo-section {
+        a {
+            display: block;
+            color: $font-color;
+            font-family: $font-mo-bold;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 55px;
+        }
+    }
+    .user-section {
+        text-align: right;
+        float: right;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        margin-right: 12px !important;
+        li {
+            display: inline-block;
+            float: left;
+            &.user-image {
+                line-height: 55px;
+                img {
+                    border-radius: 50%;
+                    border: 2px solid #cfd8dc;
+                    height: 45px;
+                    width: 45px;
+                    margin-top: 5px;
+                }
+            }
+            &.user-name {
+                color: $font-color;
+                font-family: $font-mo-light;
+                text-decoration: none;
+                font-size: 16px;
+                line-height: 55px;
+                position: relative;
+                padding-left: 10px;
+                i {
+                    position: absolute;
+                    margin-left: 5px;
+                    line-height: 55px;
+                    font-size:27px;
+                    color:$font-color-light;
+                }
+            }
+        }
+    }
+}

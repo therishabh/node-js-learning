@@ -26,11 +26,9 @@ var paths = {
     },
     admin: {
         css: {
-            vendor: ['./client/_core/vendor/angular/angular-csp.css',
-                './client/_core/vendor/font-awesome/css/font-awesome.css'
-            ],
+            vendor: ['./client/_core/vendor/angular/angular-csp.css'],
             app: ['./client/_core/styles/**/**/**/*.scss',
-                './client/admin/styles/**/**/**/*.scss'
+                './client/admin/**/**/**/**/*.scss'
             ]
         },
         js: ['./client/_core/vendor/angular/angular.js',
