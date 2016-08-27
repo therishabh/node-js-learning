@@ -4,7 +4,6 @@ var requireDir = require('require-dir');
 var tasks = requireDir('./gulp-tasks');
 
 gulp.task('dev', [
-    'browser-sync',
     'nodemon',
     'user-js',
     'user-css',

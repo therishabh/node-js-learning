@@ -19,6 +19,7 @@
   "dependencies": {
     "express": "^4.13.4",
     "flux": "^2.0.3",
+    "gulp-nodemon": "^2.1.0",
     "jade": "^1.11.0",
     "jquery": "^2.2.4",
     "mongoose": "^4.4.20",
