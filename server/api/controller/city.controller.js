@@ -3,9 +3,9 @@ var Artist = require('./../../_core/model/artist.model');
 
 module.exports = {
 
-    getArtistsCategories: function(req, res) {
+    getArtistsCities: function(req, res) {
         var deferred = Q.defer();
-        Artist.distinct('category', { 'category': { $ne: "" } })
+        Artist.distinct('location', { 'location': { $ne: "" } })
             .exec(function(err, data) {
                 if (err) {
 

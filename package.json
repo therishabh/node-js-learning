@@ -17,6 +17,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/abhijit-bit/get-my-artist#readme",
   "dependencies": {
+    "async": "^2.0.1",
     "express": "^4.13.4",
     "flux": "^2.0.3",
     "gulp-nodemon": "^2.1.0",

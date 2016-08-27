@@ -87,17 +87,24 @@ router.route('/')
                                         count++;
                                         // console.log("Image Successfully Uploaded", result);
                                         for (var abc = 0; abc < result.length; abc++) {
+                                            flickr.photos.getInfo({
+                                                api_key: flickrOptions.api_key,
+                                                photo_id: result[abc],
+                                                format: "json"
+                                            }, function(err, result) {
+                                                debugger;
+                                            });
                                             artist_image.push(result[abc]);
                                         }
 
                                         var cities = [];
                                         var locationArray = users_data[x][13].split("/")
-                                        for(var cityCount = 0; cityCount < locationArray.length; cityCount++){
+                                        for (var cityCount = 0; cityCount < locationArray.length; cityCount++) {
                                             cities.push(locationArray[cityCount].toLowerCase());
                                         }
                                         var categories = [];
                                         var categoryArray = users_data[x][12].split("/")
-                                        for(var categoryCount = 0; categoryCount < categoryArray.length; categoryCount++){
+                                        for (var categoryCount = 0; categoryCount < categoryArray.length; categoryCount++) {
                                             categories.push(categoryArray[categoryCount].toLowerCase());
                                         }
                                         var artistData = {

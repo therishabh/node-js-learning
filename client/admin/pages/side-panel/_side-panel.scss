@@ -1,0 +1,46 @@
+section#side-panel {
+    padding-top: 55px!important;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    display: inline!important;
+    width: 200px;
+    height: 100vh;
+    padding: 0;
+    color: $white;
+    background: #263238;
+    .side-nav-items {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        .side-nav-item {
+            display: block;
+            &.active {
+                a {
+                    background: #304047;
+                }
+            }
+            a {
+                display: block;
+                padding: .75rem 1rem;
+                color: $white;
+                position: relative;
+                padding-left: 30px;
+                font-size: 15px;
+                font-family: $font-mo-light;
+                text-decoration: none;
+                @include transition(0.5s all);
+                i {
+                    position: absolute;
+                    left: 1rem;
+                }
+                span {
+                    margin-left: 15px;
+                }
+                &:hover {
+                    background: #20a8d8;
+                }
+            }
+        }
+    }
+}
