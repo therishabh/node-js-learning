@@ -17,10 +17,16 @@ var path = require('path');
 
 //********Live Reload***********
 try {
-    if (process.env.ENV === 'dev') {
+    if (process.env.NODE_ENV === 'dev') {
 
         var livereload = require('./_core/config/livereload');
         livereload.enable(app);
+
+        console.log("Live reload on");
+    } else {
+
+        console.log("Live reload cannot be started");
+
     }
 
 } catch (e) {

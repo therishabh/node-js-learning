@@ -56,13 +56,16 @@ gulp.task('nodemon', function() {
             'gulpfile.js',
             'node_modules/'
         ],
-        env: { 'NODE_ENV': 'development' }
+        env: { 'NODE_ENV': 'dev' }
     }).on('restart', function() {
         console.log('restarted!')
     })
 });
 
 function notifyLiveReload(event) {
+
+    console.log('notifyLiveReload');
+
     var fileName = require('path').relative(__dirname, event.path);
 
     tinylr.changed({
@@ -76,7 +79,7 @@ function notifyLiveReload(event) {
 //=============
 // LiveReload Task
 //=============
-gulp.task('server-livereload', ['nodemon'], function() {
+gulp.task('server-livereload', function() {
     tinylr.listen(35729);
 });
 
@@ -291,13 +294,11 @@ gulp.task('watch', function() {
     gulp.watch(['./www/user/css/*.css'], notifyLiveReload);
     gulp.watch(['./www/user/js/*.js'], notifyLiveReload);
     gulp.watch(['./client/**/**/**/*.jade'], notifyLiveReload);
-    gulp.watch(['./server/**/**/*.js'], notifyLiveReload);
     gulp.watch(['./www/admin/css/*.css'], notifyLiveReload);
     gulp.watch(['./www/admin/scripts/*.js'], notifyLiveReload);
     gulp.watch(['./www/admin/js/*.js'], notifyLiveReload);
     gulp.watch(['./www/admin/pages/**/*.html'], notifyLiveReload);
 });
-
 
 
 gulp.task('dev', [
