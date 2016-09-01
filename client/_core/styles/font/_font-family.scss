@@ -3,25 +3,25 @@
 
 
 // (montserrat)
-@include font-face('montserrat-semibold', '../fonts/montserrat/Montserrat-SemiBold');
-@include font-face('montserrat-ultraLight', '../fonts/montserrat/Montserrat-UltraLight');
-@include font-face('montserrat-extraBold', '../fonts/montserrat/Montserrat-ExtraBold');
-@include font-face('montserrat-regular', '../fonts/montserrat/Montserrat-Regular');
-@include font-face('montserrat-light', '../fonts/montserrat/Montserrat-Light');
-@include font-face('montserrat-bold', '../fonts/montserrat/Montserrat-Bold');
-@include font-face('montserrat-hairline', '../fonts/montserrat/Montserrat-Hairline');
-@include font-face('montserrat-black', '../fonts/montserrat/Montserrat-Black');
+@include font-face('montserrat-semibold', '../../core/fonts/montserrat/Montserrat-SemiBold');
+@include font-face('montserrat-ultraLight', '../../core/fonts/montserrat/Montserrat-UltraLight');
+@include font-face('montserrat-extraBold', '../../core/fonts/montserrat/Montserrat-ExtraBold');
+@include font-face('montserrat-regular', '../../core/fonts/montserrat/Montserrat-Regular');
+@include font-face('montserrat-light', '../../core/fonts/montserrat/Montserrat-Light');
+@include font-face('montserrat-bold', '../../core/fonts/montserrat/Montserrat-Bold');
+@include font-face('montserrat-hairline', '../../core/fonts/montserrat/Montserrat-Hairline');
+@include font-face('montserrat-black', '../../core/fonts/montserrat/Montserrat-Black');
 
 // (VarelaRound)
-@include font-face('varelaRound-regular', '../fonts/VarelaRound/VarelaRound-Regular');
+@include font-face('varelaRound-regular', '../../core/fonts/VarelaRound/VarelaRound-Regular');
 
 
 // (gotham)
-@include font-face('gothamRound-bold', '../fonts/GothamRound/GothamRound-Bold');
+/* @include font-face('gothamRound-bold', '../../core/fonts/GothamRound/GothamRound-Bold');
 @include font-face('gothamRound-boldItalic', '../fonts/GothamRound/GothamRound-BoldItalic');
-@include font-face('gothamRound-book', '../fonts/GothamRound/GothamRound-Book');
-@include font-face('gothamRound-bookItalic', '../fonts/GothamRound/GothamRound-BookItalic');
-@include font-face('gothamRound-light', '../fonts/GothamRound/GothamRound-Light');
-@include font-face('gothamRound-lightItalic', '../fonts/GothamRound/GothamRound-LightItalic');
-@include font-face('gothamRound-medium', '../fonts/GothamRound/gothamRound-Medium');
-@include font-face('gothamRound-mediumItalic', '../fonts/GothamRound/GothamRound-MediumItalic');
+@include font-face('gothamRound-book', '../../core/fonts/GothamRound/GothamRound-Book');
+@include font-face('gothamRound-bookItalic', '../../core/fonts/GothamRound/GothamRound-BookItalic');
+@include font-face('gothamRound-light', '../../core/fonts/GothamRound/GothamRound-Light');
+@include font-face('gothamRound-lightItalic', '../../core/fonts/GothamRound/GothamRound-LightItalic');
+@include font-face('gothamRound-medium', '../../core/fonts/GothamRound/gothamRound-Medium');
+@include font-face('gothamRound-mediumItalic', '../../core/fonts/GothamRound/GothamRound-MediumItalic'); */

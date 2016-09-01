@@ -11,13 +11,16 @@ var minifyCSS = require('gulp-cssnano'),
     browserSync = require('browser-sync'),
     babelify = require('babelify'),
     browserify = require('browserify'),
-    tinylr = require('tiny-lr')();
-source = require('vinyl-source-stream');
+    tinylr = require('tiny-lr')(),
+    source = require('vinyl-source-stream'),
+    sourcemaps = require('gulp-sourcemaps'),
+    merge = require('merge-stream');
 
 
 var paths = {
     user: {
         css: ['./client/**/**/**/**/**/*.scss'],
+        vendorcss: ['./node_modules/react-responsive-carousel/lib/styles/carousel.css'],
         js: ['./client/user/**/**/**/*.js',
             './client/user/**/**/**/*.jsx'
         ],
@@ -51,10 +54,11 @@ var paths = {
 gulp.task('nodemon', function() {
     nodemon({
         script: './server/server.js',
-        ext: 'js jsx html jade',
+        ext: 'js html jade',
         ignore: [
             'gulpfile.js',
-            'node_modules/'
+            'node_modules/',
+            'client/'
         ],
         env: { 'NODE_ENV': 'dev' }
     }).on('restart', function() {
@@ -63,8 +67,6 @@ gulp.task('nodemon', function() {
 });
 
 function notifyLiveReload(event) {
-
-    console.log('notifyLiveReload');
 
     var fileName = require('path').relative(__dirname, event.path);
 
@@ -79,7 +81,7 @@ function notifyLiveReload(event) {
 //=============
 // LiveReload Task
 //=============
-gulp.task('server-livereload', function() {
+gulp.task('server-livereload', ['nodemon'], function() {
     tinylr.listen(35729);
 });
 
@@ -101,7 +103,9 @@ gulp.task('user-js', function() {
 // user CSS
 //=============
 gulp.task('user-css', function() {
-    gulp.src('./client/user/styles/client.scss')
+
+    var sassStream = gulp.src('./client/user/styles/client.scss')
+        .pipe(sourcemaps.init())
         .pipe(plumber({
             errLogToConsole: true,
             errorHandler: notify.onError({
@@ -111,8 +115,17 @@ gulp.task('user-css', function() {
         }))
         .pipe(sass())
         .on("error", console.log)
+        .pipe(sourcemaps.write())
+        .pipe(concat('sass.min.css'));
+
+    var cssStream = gulp.src(paths.user.vendorcss)
+        .pipe(concat('css.min.css'))
+
+    var mergedStream = merge(sassStream, cssStream)
         .pipe(concat('app.min.css'))
         .pipe(gulp.dest('./www/user/css/'));
+
+    return mergedStream;
 });
 
 
