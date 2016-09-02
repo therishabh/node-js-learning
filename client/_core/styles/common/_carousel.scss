@@ -1,0 +1,14 @@
+.carousel {
+    .slider-wrapper {
+        width: 90%;
+    }
+    .slider {
+        margin: 0;
+        padding: 0;
+    }
+    .carousel-slider {
+        li {
+            cursor: default !important;
+        }
+    }
+}

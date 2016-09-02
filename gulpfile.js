@@ -55,6 +55,7 @@ gulp.task('nodemon', function() {
     nodemon({
         script: './server/server.js',
         ext: 'js html jade',
+        watch: './server/**/**/**/*.*',
         ignore: [
             'gulpfile.js',
             'node_modules/',

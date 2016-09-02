@@ -1,0 +1,32 @@
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: red;
+    width: 100vw;
+    min-height: 70px;
+    .logo {
+        display: inline-block;
+        float: left;
+    }
+    .header-links {
+        float: right;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        right: 50px;
+        li {
+            display: inline-block;
+
+            a {
+            	color: rgba(255, 255, 255, 1);
+
+            	&:hover {
+            		color: orange;
+            	}
+            }
+        }
+    }
+}

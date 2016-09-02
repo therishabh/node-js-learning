@@ -5,18 +5,21 @@ const TopBannerHome = () => {
 
   return (
 
-  	<Carousel showArrows={true}>
+  	<Carousel showArrows={true} showThumbs={false} showStatus={false}>
                 <div>
-                    <img src="assets/1.jpeg" />
+                    <img src="/core/images/home/cover-1.jpg" />
                     <p className="legend">Legend 1</p>
                 </div>
                 <div>
-                    <img src="assets/2.jpeg" />
+                    <img src="/core/images/home/cover-2.jpg" />
                     <p className="legend">Legend 2</p>
                 </div>
                 <div>
-                    <img src="assets/3.jpeg" />
+                    <img src="/core/images/home/cover-3.jpg" />
                     <p className="legend">Legend 3</p>
+                </div>
+                <div>
+                    <img src="/core/images/home/cover-4.jpg" />
                 </div>
             </Carousel>
 
