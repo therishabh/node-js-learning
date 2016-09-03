@@ -20,7 +20,8 @@ var minifyCSS = require('gulp-cssnano'),
 var paths = {
     user: {
         css: ['./client/**/**/**/**/**/*.scss'],
-        vendorcss: ['./node_modules/react-responsive-carousel/lib/styles/carousel.css'],
+        vendorcss: ['./node_modules/react-boostrap-carousel/css/bootstrap.min.css'
+        ],
         js: ['./client/user/**/**/**/*.js',
             './client/user/**/**/**/*.jsx'
         ],

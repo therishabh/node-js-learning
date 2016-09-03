@@ -5,7 +5,7 @@ import Header from './../../../pages/layout/header/header.container';
 class App extends React.Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div>
       <Header />
       {this.props.children}
       </div>
