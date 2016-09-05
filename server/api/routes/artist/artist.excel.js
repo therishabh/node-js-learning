@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var Q = require('q');
-var Artist = require('./../../controller/artist.controller');
-var pathService = require('./../../service/service');
+var commonService = require('./../../service/service');
 var Artist = require('./../../../_core/model/artist.model');
+var Image = require('./../../../_core/model/artist_image');
 var Flickr = require("flickrapi"),
     flickrOptions = {
         api_key: "2fb9e85f1290cdd98114f6026cb08213",
@@ -17,13 +17,13 @@ var Flickr = require("flickrapi"),
 
 router.route('/')
     .get(function(req, res) {
-        var base_url = pathService.getBasePath();
+        var base_url = commonService.getBasePath();
 
         Flickr.authenticate(flickrOptions, function(error, flickr) {
             if (error) {
                 return console.error(error);
             } else {
-                pathService.getExcelData('reverb-sample.xlsx').then(function(result) {
+                commonService.getExcelData('reverb-sample.xlsx').then(function(result) {
                     var users_data = result.data;
                     var valid_count = result.valid_count;
                     var artist_id = 1001;
@@ -87,14 +87,21 @@ router.route('/')
                                         count++;
                                         // console.log("Image Successfully Uploaded", result);
                                         for (var abc = 0; abc < result.length; abc++) {
-                                            flickr.photos.getInfo({
-                                                api_key: flickrOptions.api_key,
-                                                photo_id: result[abc],
-                                                format: "json"
-                                            }, function(err, result) {
-                                                debugger;
-                                            });
                                             artist_image.push(result[abc]);
+                                            commonService.getImageInfo(result[abc]).then(function(imageResult) {
+                                                var imageData = {
+                                                    farm: imageResult.photo.farm,
+                                                    id: imageResult.photo.id,
+                                                    originalformat: imageResult.photo.originalformat,
+                                                    secret: imageResult.photo.secret,
+                                                    server: imageResult.photo.server,
+                                                }
+                                                var newImage = new Image(imageData);
+                                                newImage.save();
+                                                debugger;
+                                            }, function() {
+
+                                            })
                                         }
 
                                         var cities = [];
