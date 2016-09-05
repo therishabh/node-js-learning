@@ -5,7 +5,10 @@ const Header = () => {
   return (
     <nav className="header global-header">
       <div className="logo">
-        <IndexLink to="/" className="nav-link home" activeClassName="active">Get My Artist</IndexLink>
+        <IndexLink to="/" className="nav-link home" activeClassName="active">
+          <img src="/core/images/common/logo.png" />
+          <span> Get My Artist </span>
+        </IndexLink>
       </div>
       <ul className="header-links">
         <li className="header-link-item">

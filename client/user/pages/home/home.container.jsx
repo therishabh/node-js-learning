@@ -24,7 +24,7 @@ class HomePage extends React.Component {
     return (
       <section id="home">
         <TopBanner />
-        <ArtistList artists={featuredArtists} />
+        {/*<ArtistList artists={ featuredArtists } />*/}
       </section>
     );
   }

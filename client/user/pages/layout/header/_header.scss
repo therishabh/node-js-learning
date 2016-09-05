@@ -4,28 +4,40 @@
     left: 0;
     right: 0;
     z-index: 10;
-    background: red;
+    background: transparent;
     width: 100vw;
     min-height: 70px;
     .logo {
         display: inline-block;
         float: left;
+        padding: 10px;
+        img {
+            max-width: 80px;
+        }
+        span {
+            color: white;
+            font-size: 30px;
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
     .header-links {
         float: right;
-        margin: 0;
+        margin: 20px;
         padding: 0;
         position: relative;
         right: 50px;
         li {
             display: inline-block;
-
+            padding: 10px 20px;
             a {
-            	color: rgba(255, 255, 255, 1);
-
-            	&:hover {
-            		color: orange;
-            	}
+                color: rgba(255, 255, 255, 1);
+                font-family: $font-mo-regular;
+                font-size: 16px;
+                &:hover {
+                    color: orange;
+                }
             }
         }
     }
