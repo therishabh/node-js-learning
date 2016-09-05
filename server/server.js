@@ -15,6 +15,27 @@ var path = require('path');
 //***** Log File ******
 
 
+//********Live Reload***********
+try {
+    if (process.env.NODE_ENV === 'dev') {
+
+        var livereload = require('./_core/config/livereload');
+        livereload.enable(app);
+
+        console.log("Live reload on");
+    } else {
+
+        console.log("Live reload cannot be started");
+
+    }
+
+} catch (e) {
+    if (e instanceof Error && e.code === "MODULE_NOT_FOUND")
+        console.log("Live reload not loaded");
+    else
+        throw e;
+}
+//********Live Reload***********
 
 //***** Database Connectivity *******
 mongoose.Promise = global.Promise;
@@ -32,7 +53,7 @@ app.set('view engine', 'jade');
 //****** Body Parser *******
 // configure app to use bodyparser()
 // this will let us get the data form a Post
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 //****** Body Parser *******
 

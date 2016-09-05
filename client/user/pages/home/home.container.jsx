@@ -4,6 +4,8 @@ import {bindActionCreators} from 'redux';
 import * as artistsActions from './../../scripts/actions/ArtistsActions';
 import ArtistList from './../../scripts/components/ArtistCardList/ArtistCardList';
 import {browserHistory} from 'react-router';
+import TopBanner from './TopBanner/TopBanner';
+import Categories from './Categories/Categories';
 
 class HomePage extends React.Component {
 
@@ -22,7 +24,9 @@ class HomePage extends React.Component {
 
     return (
       <section id="home">
-        <ArtistList artists={featuredArtists} />
+        <TopBanner />
+        {/*<ArtistList artists={ featuredArtists } />*/}
+        <Categories />
       </section>
     );
   }

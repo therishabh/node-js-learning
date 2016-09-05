@@ -49,36 +49,18 @@ var paths = {
 
 //==================SERVER=====================================
 
-gulp.task('browser-sync', ['nodemon'], function() {
-    browserSync({
-        proxy: "localhost:6001", // local node app address
-        port: 7000, // use *different* port than above
-        notify: false
-    });
-});
-
-gulp.task('nodemon', function(cb) {
-    var called = false;
-    return nodemon({
-            script: './server/server.js',
-            ignore: [
-                'gulpfile.js',
-                'node_modules/'
-            ]
-        })
-        .on('start', function() {
-            if (!called) {
-                called = true;
-                cb();
-            }
-        })
-        .on('restart', function() {
-            setTimeout(function() {
-                reload({ stream: false });
-            }, 1000);
-            gulp.src('./server/server.js')
-                .pipe(notify('Reloading page, please wait...'));
-        });
+gulp.task('nodemon', function() {
+    nodemon({
+        script: './server/server.js',
+        ext: 'js jsx html jade',
+        ignore: [
+            'gulpfile.js',
+            'node_modules/'
+        ],
+        env: { 'NODE_ENV': 'development' }
+    }).on('restart', function() {
+        console.log('restarted!')
+    })
 });
 
 //==================USER=======================================

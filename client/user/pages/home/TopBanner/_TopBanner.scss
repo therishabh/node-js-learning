@@ -1,0 +1,44 @@
+.top-banner {
+    .slide-wrapper {
+        width: 100vw;
+        height: 100vh;
+        img {
+            max-width: 100%;
+        }
+        .cover-image {
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
+        }
+        .cover-image-1 {
+            background-image: url("/core/images/home/cover-1.jpg");
+        }
+        .cover-image-2 {
+            background-image: url("/core/images/home/cover-2.jpg");
+        }
+        .cover-image-3 {
+            background-image: url("/core/images/home/cover-3.jpg");
+        }
+        .cover-image-4 {
+            background-image: url("/core/images/home/cover-4.jpg");
+        }
+        .carousel-caption {
+            right: 0;
+            left: -50%;
+            top: calc(50% - 100px);
+            padding-bottom: 30px;
+            font-family: $font-mo-bold;
+        }
+        .carousel-indicators {
+            left: 5%;
+        }
+    }
+    .arrow-down {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        color: $white;
+        font-size: 45px;
+        cursor: pointer;
+    }
+}
