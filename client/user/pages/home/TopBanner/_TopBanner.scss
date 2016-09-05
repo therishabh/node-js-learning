@@ -33,4 +33,12 @@
             left: 5%;
         }
     }
+    .arrow-down {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        color: $white;
+        font-size: 45px;
+        cursor: pointer;
+    }
 }

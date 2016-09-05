@@ -39,6 +39,7 @@ const TopBannerHome = () => {
           </Carousel.Item>
         </Carousel>
       </div>
+      <i className="arrow-down material-icons">keyboard_arrow_down</i>
     </div>
 
     );
