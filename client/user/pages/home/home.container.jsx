@@ -1,9 +1,9 @@
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as artistsActions from './../../scripts/actions/ArtistsActions';
 import ArtistList from './../../scripts/components/ArtistCardList/ArtistCardList';
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
 import TopBanner from './TopBanner/TopBanner';
 import Categories from './Categories/Categories';
 
@@ -18,17 +18,17 @@ class HomePage extends React.Component {
     this.props.actions.loadFeaturedArtists();
   }
 
-    render() {
+  render() {
 
     const {featuredArtists} = this.props;
 
     return (
       <section id="home">
         <TopBanner />
-        {/*<ArtistList artists={ featuredArtists } />*/}
         <Categories />
+        <ArtistList artists={ featuredArtists } />
       </section>
-    );
+      );
   }
 }
 
