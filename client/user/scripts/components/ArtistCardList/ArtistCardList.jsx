@@ -5,7 +5,23 @@ const ArtistList = ({artists}) => {
   return (
     <ul>
       { artists.map(artist => <li>
-                                <span>{ artist.name }</span>
+                                <div class="artist-card">
+                                  <div className="image-container">
+                                    <img src={ artist.image } />
+                                  </div>
+                                  <div className="details-container">
+                                    <p>
+                                      { artist.name }
+                                    </p>
+                                    <p>
+                                      { artist.genre }
+                                    </p>
+                                    <p>
+                                      { artist.location }
+                                    </p>
+                                  </div>
+                                  <div>View Details</div>
+                                </div>
                               </li>
         ) }
     </ul>
