@@ -4,8 +4,11 @@ import { bindActionCreators } from 'redux';
 import * as artistsActions from './../../scripts/actions/ArtistsActions';
 import ArtistList from './../../scripts/components/ArtistCardList/ArtistCardList';
 import { browserHistory } from 'react-router';
-import TopBanner from './TopBanner/TopBanner';
 import Categories from './Categories/Categories';
+import TopBanner from './TopBanner/TopBanner';
+import HowWhyGMA from './HowWhyGMA/HowWhyGMA';
+import SEM from './SEM/SEM';
+import Testimonials from './Testimonials/Testimonials';
 
 class HomePage extends React.Component {
 
@@ -27,6 +30,9 @@ class HomePage extends React.Component {
         <TopBanner />
         <Categories />
         <ArtistList artists={ featuredArtists } />
+        <HowWhyGMA />
+        <Testimonials />
+        <SEM />
       </section>
       );
   }
