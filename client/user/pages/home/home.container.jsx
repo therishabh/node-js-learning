@@ -1,11 +1,14 @@
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as artistsActions from './../../scripts/actions/ArtistsActions';
 import ArtistList from './../../scripts/components/ArtistCardList/ArtistCardList';
-import {browserHistory} from 'react-router';
-import TopBanner from './TopBanner/TopBanner';
+import { browserHistory } from 'react-router';
 import Categories from './Categories/Categories';
+import TopBanner from './TopBanner/TopBanner';
+import HowWhyGMA from './HowWhyGMA/HowWhyGMA';
+import SEM from './SEM/SEM';
+import Testimonials from './Testimonials/Testimonials';
 
 class HomePage extends React.Component {
 
@@ -18,17 +21,20 @@ class HomePage extends React.Component {
     this.props.actions.loadFeaturedArtists();
   }
 
-    render() {
+  render() {
 
     const {featuredArtists} = this.props;
 
     return (
       <section id="home">
         <TopBanner />
-        {/*<ArtistList artists={ featuredArtists } />*/}
         <Categories />
+        <ArtistList artists={ featuredArtists } />
+        <HowWhyGMA />
+        <Testimonials />
+        <SEM />
       </section>
-    );
+      );
   }
 }
 
