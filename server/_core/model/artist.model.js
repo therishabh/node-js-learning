@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
 var artistSchema = new schema({
-    artist_id : {type:Number},
+    artist_id: { type: Number },
     name: { type: String, trim: true },
     description: { type: String },
     email: { type: Array },
@@ -21,7 +21,16 @@ var artistSchema = new schema({
         mobile: { type: Array },
         landline: { type: Array }
     }],
-    image : {type:Array},
+    image: [{
+        farm: { type: String },
+        id: { type: String },
+        originalformat: { type: String },
+        secret: { type: String },
+        server: { type: String },
+        is_primary: { type: Boolean, default: 0 },
+        is_active: { type: Boolean, default: 1 },
+        status: { type: Boolean, default: 1 }
+    }],
     featured: { type: Boolean, default: 0 },
     is_active: { type: Boolean, default: 1 },
     status: { type: Boolean, default: 1 }

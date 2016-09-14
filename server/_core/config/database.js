@@ -1,5 +1,5 @@
 var mongoose = {
-	database : 'mongodb://localhost/getmyartist:27017'
+	database : 'mongodb://localhost/getmyartists:27017'
 }
 
 module.exports = mongoose;

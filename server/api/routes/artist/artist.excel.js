@@ -67,7 +67,7 @@ router.route('/')
                                 var flickr_image_object = []
                                 for (var imageint = 0; imageint < artistImages.length; imageint++) {
                                     var image_name = artistImages[imageint];
-                                    var artist_image_absolute_path = base_url + "/artist-images/" + image_name;
+                                    var artist_image_absolute_path = base_url + "/artist-image/" + image_name;
                                     var flickr_obj = {
                                         title: users_data[x][0],
                                         tags: users_data[x][12].split("/"),
@@ -86,8 +86,12 @@ router.route('/')
                                     } else {
                                         count++;
                                         // console.log("Image Successfully Uploaded", result);
+                                        var imageCount = 0;
+                                        var totalImageCount = result.length;
+                                        var artist_img = [];
                                         for (var abc = 0; abc < result.length; abc++) {
                                             artist_image.push(result[abc]);
+                                            debugger;
                                             commonService.getImageInfo(result[abc]).then(function(imageResult) {
                                                 var imageData = {
                                                     farm: imageResult.photo.farm,
@@ -96,48 +100,52 @@ router.route('/')
                                                     secret: imageResult.photo.secret,
                                                     server: imageResult.photo.server,
                                                 }
-                                                var newImage = new Image(imageData);
-                                                newImage.save();
-                                                debugger;
+                                                artist_img.push(imageData);
+                                                imageCount = imageCount + 1;
+                                                if (totalImageCount == imageCount) {
+                                                    var cities = [];
+                                                    var locationArray = users_data[x][13].split("/")
+                                                    for (var cityCount = 0; cityCount < locationArray.length; cityCount++) {
+                                                        cities.push(locationArray[cityCount].toLowerCase());
+                                                    }
+                                                    var categories = [];
+                                                    var categoryArray = users_data[x][12].split("/")
+                                                    for (var categoryCount = 0; categoryCount < categoryArray.length; categoryCount++) {
+                                                        categories.push(categoryArray[categoryCount].toLowerCase());
+                                                    }
+                                                    var artistData = {
+                                                        artist_id: artist_id,
+                                                        name: users_data[x][0],
+                                                        description: users_data[x][1],
+                                                        email: users_data[x][2],
+                                                        link: {
+                                                            youtube: users_data[x][3].split(','),
+                                                            facebook: users_data[x][4],
+                                                            twitter: users_data[x][5],
+                                                            instagram: users_data[x][6],
+                                                            website: users_data[x][7]
+                                                        },
+                                                        contact: contactPersonData,
+                                                        category: categories,
+                                                        location: cities,
+                                                        image: artist_img,
+                                                    }
+                                                    allData.push(artistData);
+                                                    var newArtist = new Artist(artistData);
+                                                    newArtist.save();
+                                                    artist_id++;
+
+                                                    if (count === valid_count) {
+                                                        res.json(allData);
+                                                    }
+
+                                                    artist_img;
+                                                    debugger;
+
+                                                }
                                             }, function() {
 
                                             })
-                                        }
-
-                                        var cities = [];
-                                        var locationArray = users_data[x][13].split("/")
-                                        for (var cityCount = 0; cityCount < locationArray.length; cityCount++) {
-                                            cities.push(locationArray[cityCount].toLowerCase());
-                                        }
-                                        var categories = [];
-                                        var categoryArray = users_data[x][12].split("/")
-                                        for (var categoryCount = 0; categoryCount < categoryArray.length; categoryCount++) {
-                                            categories.push(categoryArray[categoryCount].toLowerCase());
-                                        }
-                                        var artistData = {
-                                            artist_id: artist_id,
-                                            name: users_data[x][0],
-                                            description: users_data[x][1],
-                                            email: users_data[x][2],
-                                            link: {
-                                                youtube: users_data[x][3].split(','),
-                                                facebook: users_data[x][4],
-                                                twitter: users_data[x][5],
-                                                instagram: users_data[x][6],
-                                                website: users_data[x][7]
-                                            },
-                                            contact: contactPersonData,
-                                            category: categories,
-                                            location: cities,
-                                            image: artist_image,
-                                        }
-                                        allData.push(artistData);
-                                        var newArtist = new Artist(artistData);
-                                        newArtist.save();
-                                        artist_id++;
-
-                                        if (count === valid_count) {
-                                            res.json(allData);
                                         }
                                     }
                                 });
