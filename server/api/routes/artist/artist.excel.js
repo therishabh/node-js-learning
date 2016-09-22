@@ -23,22 +23,23 @@ router.route('/')
             if (error) {
                 return console.error(error);
             } else {
-                commonService.getExcelData('reverb-sample.xlsx').then(function(result) {
+                commonService.getExcelData('artist-info.xlsx').then(function(result) {
+
                     var users_data = result.data;
                     var valid_count = result.valid_count;
                     var artist_id = 1001;
                     var count = 0;
                     var allData = [];
                     for (var x = 1; x < users_data.length; x++) {
-                        if (users_data[x][0] != "") {
+                        if (users_data[x][1] !== "") {
                             (function(x) {
 
                                 //get contact Person Data.
                                 var contactPersonData = [];
-                                var contactPersonName = users_data[x][8].split("/");
-                                var contactPersonMobile = users_data[x][9].split("/");
-                                var contactPersonEmail = users_data[x][10].split("/");
-                                var contactPersonLandline = users_data[x][11].split("/");
+                                var contactPersonName = users_data[x][11].split("/");
+                                var contactPersonMobile = users_data[x][12].split("/");
+                                var contactPersonEmail = users_data[x][13].split("/");
+                                var contactPersonLandline = users_data[x][14].split("/");
 
                                 var contactPersonLength = contactPersonName.length;
                                 if (contactPersonMobile.length > contactPersonLength) {
@@ -60,17 +61,19 @@ router.route('/')
                                     contactPersonData.push(contactPerson);
                                 }
 
+                                debugger;
+
                                 // //image upload section..
                                 var artist_image = [];
-                                var artistImages = users_data[x][14].split(",");
+                                var artistImages = users_data[x][6].split(",");
 
                                 var flickr_image_object = []
                                 for (var imageint = 0; imageint < artistImages.length; imageint++) {
                                     var image_name = artistImages[imageint];
-                                    var artist_image_absolute_path = base_url + "/artist-image/" + image_name;
+                                    var artist_image_absolute_path = base_url + "/artist-images/" + image_name;
                                     var flickr_obj = {
-                                        title: users_data[x][0],
-                                        tags: users_data[x][12].split("/"),
+                                        title: users_data[x][1],
+                                        tags: users_data[x][15].split("/"),
                                         photo: artist_image_absolute_path
                                     }
                                     flickr_image_object.push(flickr_obj);
@@ -104,26 +107,26 @@ router.route('/')
                                                 imageCount = imageCount + 1;
                                                 if (totalImageCount == imageCount) {
                                                     var cities = [];
-                                                    var locationArray = users_data[x][13].split("/")
+                                                    var locationArray = users_data[x][5].split("/")
                                                     for (var cityCount = 0; cityCount < locationArray.length; cityCount++) {
                                                         cities.push(locationArray[cityCount].toLowerCase());
                                                     }
                                                     var categories = [];
-                                                    var categoryArray = users_data[x][12].split("/")
+                                                    var categoryArray = users_data[x][4].split("/")
                                                     for (var categoryCount = 0; categoryCount < categoryArray.length; categoryCount++) {
                                                         categories.push(categoryArray[categoryCount].toLowerCase());
                                                     }
                                                     var artistData = {
                                                         artist_id: artist_id,
-                                                        name: users_data[x][0],
-                                                        description: users_data[x][1],
-                                                        email: users_data[x][2],
+                                                        name: users_data[x][1],
+                                                        description: users_data[x][2],
+                                                        email: users_data[x][14],
                                                         link: {
                                                             youtube: users_data[x][3].split(','),
-                                                            facebook: users_data[x][4],
-                                                            twitter: users_data[x][5],
-                                                            instagram: users_data[x][6],
-                                                            website: users_data[x][7]
+                                                            facebook: users_data[x][7],
+                                                            twitter: users_data[x][8],
+                                                            instagram: users_data[x][9],
+                                                            website: users_data[x][10]
                                                         },
                                                         contact: contactPersonData,
                                                         category: categories,
